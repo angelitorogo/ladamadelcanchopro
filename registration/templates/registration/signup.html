@@ -1,0 +1,116 @@
+{% extends 'core/base-nologado.html' %}
+{% load static %}
+{% block title %}{{title}}{% endblock %}
+{% block content %}
+
+<div class="imagen-dama">
+    <img src="{% static 'iconos/LDDC-icono.png' %}"  alt="">
+</div>
+<h1 class="title-general title-login">La Dama del Cancho</h1>
+
+<div class="principal-no-logado">
+    <div class="contenedor-registro">
+
+        <h2 class="title title-registration">{{title}}</h2>
+
+        {% if 'existeMail' in request.GET %}
+                <p class="mensaje-registration error">El correo {{email}} ya esta registrado</span></p>
+            {% endif %}
+
+            {% if 'existeUsername' in request.GET %}
+                <p class="mensaje-registration error">El nombre de usuario {{username}} ya esta registrado</span></p>
+            {% endif %}
+
+            {% if 'formfault' in request.GET %}
+                <p class="mensaje-registration error">Rellene correctamente el formulario</span></p>
+            {% endif %}
+
+
+        <form  class="formulario formulario-login" method="POST">
+            {% csrf_token %}
+
+            <div class="formulario-flex">
+                <div class="formulario-izquierda">
+                    <div class="formulario-group-registro">
+                        <input type="text" name="username" autofocus maxlength="254"
+                            id="id_username" class="formulario-input" placeholder="Nombre de usuario"/>
+                    </div>
+        
+                    <div class="formulario-group-registro">
+                        <input type="text" name="firstname" autofocus maxlength="254"
+                            id="id_firstname" class="formulario-input" placeholder="Nombre"/>
+                    </div>
+        
+                    <div class="formulario-group-registro">
+                        <input type="text" name="lastname" autofocus maxlength="254"
+                            id="id_lastname" class="formulario-input" placeholder="Apellidos"/>
+                    </div>
+                    <div class="formulario-group-registro">
+                        <input type="email" name="email" autofocus maxlength="254"
+                            id="id_email" class="formulario-input" placeholder="Correo"/>
+                    </div>
+                </div>
+                <div class="formulario-derecha">
+                    <div class="formulario-group-registro">
+                        <input type="password" name="password1"
+                        id="id_password1" class="formulario-input" placeholder="Contraseña"/>
+                    </div>
+        
+                    <div class="formulario-group-registro">
+                        <input type="password" name="password2"
+                        id="id_password2" class="formulario-input" placeholder="Repita contraseña"/>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="formulario-group">
+                <input type="submit" class="btn btn-success" value="Crear cuenta" onclick="cargarLoader()">
+            </div>
+
+            <div class="formulario-recordatorio">
+                <p class="formulario-recordatorio-texto">Si ya tienes una cuenta inicia sesión <a class="formulario-recordatorio-link" href="{% url 'login' %}" onclick="cargarLoader()">aquí</a></p>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+
+<script>
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+        var loaderGeneral = document.getElementById('loader-general');
+        loaderGeneral.style.top='24.2%';
+        
+        function comprobarScreen() {
+            if( screen.width < 768) {
+                loaderGeneral.style.left='38.5%';
+                loaderGeneral.style.top='29.2%';
+            } else {
+                loaderGeneral.style.left='47.5%';
+                loaderGeneral.style.top='45.2%';
+            }
+        }
+
+        function handleScreenSizeChange(mediaQuery) {
+            if (mediaQuery.matches) {
+                //mas de 768px
+                loaderGeneral.style.left='47.5%';
+                loaderGeneral.style.top='45.2%';
+                
+            } else {
+                //menos de 768px
+                loaderGeneral.style.left='38.5%';
+                loaderGeneral.style.top='29.2%';
+            }
+        }
+
+        comprobarScreen()
+        mediaQuery.addListener(handleScreenSizeChange);
+</script>
+
+   
+    
+
+{% endblock %}

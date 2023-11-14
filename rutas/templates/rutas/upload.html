@@ -1,0 +1,75 @@
+{% extends 'core/base-logado.html' %}
+{% load static %}
+{% block title %}{{title}}{% endblock %}
+{% block content %}
+
+    <div>
+        <div id="modal" class="modal">
+            <div id="loaderMap" class="loaderMap"></div>
+        </div>
+
+        <h1 class="title-general-logado">{{ title}}</h1>
+
+        {% if 'uploaded' in request.GET %}
+            <p class="mensaje-registration success success-track">Nuevas rutas añadidas</p>
+        {% endif %}
+
+        {% if 'noUploaded' in request.GET %}
+            <p class="mensaje-registration error error-track">Ruta ya esta subida</p>
+        {% endif %}
+        {% if 'uploadedButNotAll' in request.GET %}
+            <p class="mensaje-registration success success-track">Nuevas rutas añadidas</p>
+            <p class="mensaje-registration error error-track">Alguna ruta no se ha podido codificar</p>
+        {% endif %}
+
+
+        <div class="contenedor-nuevoTrack">
+            <form  class="formulario formulario-login form-upload" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="formulario-group">
+                    <label class="label-track" for="video">Seleccione Track</label>
+                    <input type="file" name="track" accept=".gpx" class="formulario-input input-track" id="id_track" multiple onchange="trackSeleccionado(event)">
+                </div>
+
+                <div class="formulario-group">
+                    <input type="submit" class="btn btn-success btn-track" value="Aceptar" disabled id="btn-submit" onclick="upload()"> <!--onclick="cargarLoader()"-->
+                </div>
+
+        
+            </form>
+        
+        </div>
+
+
+    </div>
+
+    
+
+
+
+    <script>
+
+        var btnSubmit = document.getElementById('btn-submit');
+
+        function trackSeleccionado(event) {
+
+            tracks = event.target.files
+
+            if (tracks.length > 0) {
+                btnSubmit.removeAttribute('disabled');
+            }
+
+        }
+
+        function upload() {
+            document.getElementById('modal').style.display = 'block';
+        }
+
+      
+
+    </script>
+
+    
+{% endblock %}
+

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>La dama del Cancho | {% block title %}{% endblock %}</title>
+    
+    <!-- Estilos -->
+    <link href="{% static 'css/normalize.css' %}" rel="stylesheet">
+    <link href="{% static 'css/globales.css' %}" rel="stylesheet">
+    <link href="{% static 'css/estilos.css' %}" rel="stylesheet">
+    <link href="{% static 'css/mostrar.css' %}" rel="stylesheet">
+
+    <!--favicon-->
+    <link rel="icon" type="image/png" sizes="16x16"  href="{% static 'favicons/favicon-16x16.png' %}">
+
+    <!--Fuentes-->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        
+
+</head>
+
+
+<body class="body-logado" id="body-logado">
+
+    <div class="container-navbar" id="container-navbar">
+        <nav class="nav" id="nav">
+            <div class="nav-contenido">
+    
+                <div class="nav-brand">
+                    <a href="{% url 'home' %}">
+                        <img src="{% static 'iconos/LDDC-icono-blanco.png'%}" alt="" id="logo-xl">
+                    </a>
+                </div>
+                <div class="nav-brand-xl" id="brand-xl">La Dama del Cancho</div>
+                <div class="nav-brand-xs">
+                    <a href="{% url 'home' %}">
+                        <img src="{% static 'iconos/LDDC-icono-blanco.png'%}" alt="" id="logo-xs">
+                    </a>
+                </div>
+                <div class="menu" id="menu">
+                    <ul class="nav-lista" id="id-menu">
+                        <li class="nav-item" onclick="navegarUrl('/rutas')">
+                            <a>Rutas</a>
+                        </li>
+                        <li class="nav-item" onclick="navegarUrl('/mapa')">
+                           <a>Mapa</a>
+                        </li>
+                        <li class="nav-item" onclick="navegarUrl('/contacto')">
+                            <a>Contacto</a>
+                        </li>
+                    </ul>
+                
+                    <ul class="nav-usuario">
+                        <li class="nav-input" id="id-busqueda" style="display: none;">
+                            <form id="busqueda-form" method="post"> <!--El POST lo realiza en la pagina que este mostrando en ese momento en la url-->
+                                {% csrf_token %}
+                                <input class="input-buscar" type="text" id="input-busqueda" name="termino">
+                            </form>
+                        </li>
+                        <li class="nav-item nav-buscar" onclick="mostrarBusqueda()" id="nav-lupa" style="display: none;">
+                            <a><img class="icono-buscar" src="{% static 'iconos/busqueda-blanco.png' %}" alt="" id="icono-buscar"></a>
+                        </li>
+                        <li class="nav-item-logout" id="id-login"> <!--onclick="cargarLoader()"-->
+                            {% if request.user.is_authenticated %}
+                            <a href="{% url 'logout' %}"><img class="icono-salir" src="{% static 'iconos/salir-blanco.png' %}" alt="" id="icono-salir"></a>
+                            {% else %}
+                            <a class="enlace-login" href="{% url 'login' %}" id="enlace-login">Login</a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+        </nav>
+
+    </div>
+
+   
+
+    
+
+
+    
+
+    <!-- Contenido -->
+    <section class="contenedor-logado" id="contenedor-logado">
+        
+        <div class="loaderGeneralLogado no-mostrar" id="loader-general-logado"></div>
+        {% block content %}{% endblock %}
+
+    </section>
+    
+   
+    <!--Footer-->
+    
+    <footer class="footer" id="footer">
+        <img  class="footer-imagen" src="{% static 'img/ondas-footer.png' %}" alt="" id="ondas">
+        <div class="texto-footer">
+            Copyright &copy; <span id="year">{{year}}</span> <span class="footer-url">www.ladamadelcancho.es</span>
+        </div>
+    </footer>
+
+    <script>
+        var prueba = 'Angel'
+        //var loaderGeneralLogado = document.getElementById('loader-general-logado');
+        var urlActual = window.location.href;
+        var menu = document.getElementById('menu');
+        var idMenu = document.getElementById('id-menu');
+        var idBusqueda = document.getElementById('id-busqueda');
+        var navLupa = document.getElementById('nav-lupa');
+        var nav = document.getElementById('nav');
+        let containerNavbar = document.getElementById('container-navbar'); // Reemplaza 'tuElemento' con el ID de tu elemento
+        var contenedorLogado = document.getElementById('contenedor-logado');
+        let enlaceLogin = document.getElementById('enlace-login');
+        var ondas = document.getElementById('ondas');
+
+        if( screen.width < 768) {
+            nav.style.backgroundColor = 'var(--negro)';
+        }
+
+        var loaderGeneral = document.getElementById('loader-general-logado');
+        var bodyNoLogado = document.getElementById('body-no-logado');
+
+        //bodyNoLogado.style.backgroundColor = 'var(--back-ground)';
+
+        window.addEventListener('scroll', function() {
+            var scrollY = window.scrollY || window.pageYOffset;
+            var windowHeight = window.innerHeight;
+    
+            // Calculamos el nuevo valor del top
+            var newTop = scrollY + (windowHeight / 2) - 183;
+    
+            // Asignamos el nuevo valor al estilo del loader
+            loaderGeneral.style.top = newTop + 'px';
+        });
+        
+
+        window.addEventListener('scroll', function() {
+            let scrollPos = window.scrollY;
+           
+            
+            // Muestra la posición actual en la consola
+            if (scrollPos > 128) {
+                containerNavbar.classList.add('p-0');
+            
+                if( screen.width > 768) {
+                    contenedorLogado.style.margin = '12rem auto 1rem auto';
+                    containerNavbar.style.backgroundImage = 'unset';
+                } else {
+                    contenedorLogado.style.margin = '6rem auto';
+                }
+
+
+            } else {
+                containerNavbar.classList.remove('p-0');
+                if( screen.width > 768) {
+                    containerNavbar.style.backgroundImage = "url('../../../static/img/fondo-nav.png')";
+                }
+
+                contenedorLogado.style.margin = '1rem auto';
+
+            }
+          });
+
+        function configuracionesIniciales() {
+
+            var url = window.location.href;
+
+            if (url.includes('mapa') || url.includes('rutas')) {
+                navLupa.style.display = 'flex'
+            }
+
+            if (url.includes('mapa') ) {
+                var footer = document.getElementById('footer');
+                footer.style.position = 'fixed';
+                footer.style.bottom = 0;
+                containerNavbar.classList.add('p-0');
+            
+                if( screen.width > 768) {
+                    contenedorLogado.style.margin = '3rem auto';
+                    containerNavbar.style.backgroundImage = 'unset';
+                } else {
+                    contenedorLogado.style.margin = '3rem auto';
+                }
+
+                ondas.style.display = 'none';
+            }
+
+        }
+        
+        //Para evitar menu del boton derecho
+        window.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+        }, false);
+
+        function navegarUrl(url) {
+            window.location.href = url;
+        }
+
+        function mostrarBusqueda() {
+
+            if (idBusqueda.style.display == 'none') {
+                idBusqueda.style.display = 'block';
+
+                if (screen.width < 768) {
+                    idMenu.style.display = 'none';
+                    menu.style.justifyContent = 'flex-end';
+                }
+                
+
+            } else {
+                idBusqueda.style.display = 'none';
+
+                if (screen.width < 768) {
+                    idMenu.style.display = 'flex';
+                    menu.style.justifyContent = 'space-between';
+                }
+
+            }
+
+            
+        }
+
+        function busqueda() {
+            document.getElementById("input-busqueda").addEventListener("change", function() {
+                document.getElementById("busqueda-form").submit();
+            });
+        }
+
+
+        busqueda();
+        configuracionesIniciales();
+
+
+    </script>
+
+
+</body>
+</html>

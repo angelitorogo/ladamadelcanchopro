@@ -1,0 +1,905 @@
+
+STREAM b'IHDR' 16 13
+STREAM b'IDAT' 41 1216
+Internal Server Error: /contacto
+Traceback (most recent call last):
+  File "C:\xampp\htdocs\nuevaApp2\venv-nuevaApp2\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\nuevaApp2\venv-nuevaApp2\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\nuevaApp2\contacto\views.py", line 72, in contacto_page
+    captcha_image, captcha_text = generate_captcha()
+                                  ^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\nuevaApp2\contacto\views.py", line 101, in generate_captcha
+    url = os.path.join(settings.STATICFILES_DIRS, 'captcha', 'captcha_image.png')
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen ntpath>", line 108, in join
+TypeError: expected str, bytes or os.PathLike object, not list
+STREAM b'IHDR' 16 13
+STREAM b'IDAT' 41 1216
+STREAM b'IHDR' 16 13
+STREAM b'IDAT' 41 1216
+STREAM b'IHDR' 16 13
+STREAM b'IDAT' 41 1216
+STREAM b'IHDR' 16 13
+STREAM b'IDAT' 41 1216
+STREAM b'IHDR' 16 13
+STREAM b'IDAT' 41 1216
+STREAM b'IHDR' 16 13
+STREAM b'IDAT' 41 1216
+Watching for file changes with StatReloader
+STREAM b'IHDR' 16 13
+STREAM b'IDAT' 41 1216
+STREAM b'IHDR' 16 13
+STREAM b'IDAT' 41 1216
+STREAM b'IHDR' 16 13
+STREAM b'IDAT' 41 1216
+STREAM b'IHDR' 16 13
+STREAM b'IDAT' 41 1216
+STREAM b'IHDR' 16 13
+STREAM b'IDAT' 41 1216
+Not Found: /static/iconos/dot.png
+Starting new HTTPS connection (1): maps.googleapis.com:443
+https://maps.googleapis.com:443 "GET /maps/api/geocode/json?latlng=41.135158,-3.580919&key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs HTTP/1.1" 200 25478
+Starting new HTTPS connection (1): opendata.aemet.es:443
+https://opendata.aemet.es:443 "GET /opendata/api/prediccion/especifica/municipio/diaria/28143/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmdlbGl0b3JvZ29AaG90bWFpbC5jb20iLCJqdGkiOiI5ZDY5MjQxMy01M2I2LTQ2NjctODQ3ZS0xOTgyMzMzN2QzYjkiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY5NTIxMzE3MiwidXNlcklkIjoiOWQ2OTI0MTMtNTNiNi00NjY3LTg0N2UtMTk4MjMzMzdkM2I5Iiwicm9sZSI6IiJ9.gAQt0xzVlgQuJcIE7Q7tJCuCzwROVXo1UW2ck13H2mk HTTP/1.1" 200 175
+Not Found: /static/iconos/dot.png
+Not Found: /static/iconos/dot.png
+Not Found: /static/iconos/dot.png
+Not Found: /static/iconos/dot.png
+Not Found: /static/iconos/dot.png
+Starting new HTTPS connection (1): maps.googleapis.com:443
+https://maps.googleapis.com:443 "GET /maps/api/geocode/json?latlng=41.135158,-3.580919&key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs HTTP/1.1" 200 25478
+Starting new HTTPS connection (1): opendata.aemet.es:443
+https://opendata.aemet.es:443 "GET /opendata/api/prediccion/especifica/municipio/diaria/28143/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmdlbGl0b3JvZ29AaG90bWFpbC5jb20iLCJqdGkiOiI5ZDY5MjQxMy01M2I2LTQ2NjctODQ3ZS0xOTgyMzMzN2QzYjkiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY5NTIxMzE3MiwidXNlcklkIjoiOWQ2OTI0MTMtNTNiNi00NjY3LTg0N2UtMTk4MjMzMzdkM2I5Iiwicm9sZSI6IiJ9.gAQt0xzVlgQuJcIE7Q7tJCuCzwROVXo1UW2ck13H2mk HTTP/1.1" 200 175
+Not Found: /static/css/estilos.css
+Starting new HTTPS connection (1): maps.googleapis.com:443
+https://maps.googleapis.com:443 "GET /maps/api/geocode/json?latlng=40.725322,-3.884437&key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs HTTP/1.1" 200 20087
+Starting new HTTPS connection (1): opendata.aemet.es:443
+https://opendata.aemet.es:443 "GET /opendata/api/prediccion/especifica/municipio/diaria/28082/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmdlbGl0b3JvZ29AaG90bWFpbC5jb20iLCJqdGkiOiI5ZDY5MjQxMy01M2I2LTQ2NjctODQ3ZS0xOTgyMzMzN2QzYjkiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY5NTIxMzE3MiwidXNlcklkIjoiOWQ2OTI0MTMtNTNiNi00NjY3LTg0N2UtMTk4MjMzMzdkM2I5Iiwicm9sZSI6IiJ9.gAQt0xzVlgQuJcIE7Q7tJCuCzwROVXo1UW2ck13H2mk HTTP/1.1" 200 175
+Not Found: /static/css/estilos.css
+Not Found: /static/css/normalize.css
+Not Found: /static/css/estilos.css
+Not Found: /static/css/globales.css
+Not Found: /static/css/mostrar.css
+Not Found: /static/iconos/Icono-40254D.png
+Not Found: /static/favicons/favicon-16x16.png
+Not Found: /static/css/normalize.css
+Not Found: /static/css/mostrar.css
+Not Found: /static/css/globales.css
+Not Found: /static/css/estilos.css
+Not Found: /static/iconos/Icono-40254D.png
+Not Found: /static/css/normalize.css
+Not Found: /static/css/globales.css
+Not Found: /static/css/mostrar.css
+Not Found: /static/iconos/Icono-40254D.png
+Not Found: /static/css/estilos.css
+Not Found: /static/css/normalize.css
+Not Found: /static/img/icono-40254D.png
+Not Found: /static/img/cancho de los muertos.jpg
+Not Found: /static/css/estilos.css
+Not Found: /static/css/globales.css
+Not Found: /static/css/mostrar.css
+Not Found: /static/css/estilos.css
+Starting new HTTPS connection (1): maps.googleapis.com:443
+https://maps.googleapis.com:443 "GET /maps/api/geocode/json?latlng=41.135158,-3.580919&key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs HTTP/1.1" 200 25478
+Starting new HTTPS connection (1): opendata.aemet.es:443
+https://opendata.aemet.es:443 "GET /opendata/api/prediccion/especifica/municipio/diaria/28143/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmdlbGl0b3JvZ29AaG90bWFpbC5jb20iLCJqdGkiOiI5ZDY5MjQxMy01M2I2LTQ2NjctODQ3ZS0xOTgyMzMzN2QzYjkiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY5NTIxMzE3MiwidXNlcklkIjoiOWQ2OTI0MTMtNTNiNi00NjY3LTg0N2UtMTk4MjMzMzdkM2I5Iiwicm9sZSI6IiJ9.gAQt0xzVlgQuJcIE7Q7tJCuCzwROVXo1UW2ck13H2mk HTTP/1.1" 200 175
+STREAM b'IHDR' 16 13
+STREAM b'IDAT' 41 1216
+Starting new HTTPS connection (1): maps.googleapis.com:443
+https://maps.googleapis.com:443 "GET /maps/api/geocode/json?latlng=41.745547,-3.060513&key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs HTTP/1.1" 200 17342
+Starting new HTTPS connection (1): opendata.aemet.es:443
+https://opendata.aemet.es:443 "GET /opendata/api/prediccion/especifica/municipio/diaria/42189/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmdlbGl0b3JvZ29AaG90bWFpbC5jb20iLCJqdGkiOiI5ZDY5MjQxMy01M2I2LTQ2NjctODQ3ZS0xOTgyMzMzN2QzYjkiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY5NTIxMzE3MiwidXNlcklkIjoiOWQ2OTI0MTMtNTNiNi00NjY3LTg0N2UtMTk4MjMzMzdkM2I5Iiwicm9sZSI6IiJ9.gAQt0xzVlgQuJcIE7Q7tJCuCzwROVXo1UW2ck13H2mk HTTP/1.1" 200 175
+STREAM b'IHDR' 16 13
+STREAM b'IDAT' 41 1216
+STREAM b'IHDR' 16 13
+STREAM b'IDAT' 41 1216
+STREAM b'IHDR' 16 13
+STREAM b'IDAT' 41 1216
+STREAM b'IHDR' 16 13
+STREAM b'IDAT' 41 1216
+Starting new HTTPS connection (1): maps.googleapis.com:443
+https://maps.googleapis.com:443 "GET /maps/api/geocode/json?latlng=41.135158,-3.580919&key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs HTTP/1.1" 200 25471
+Starting new HTTPS connection (1): opendata.aemet.es:443
+https://opendata.aemet.es:443 "GET /opendata/api/prediccion/especifica/municipio/diaria/28143/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmdlbGl0b3JvZ29AaG90bWFpbC5jb20iLCJqdGkiOiI5ZDY5MjQxMy01M2I2LTQ2NjctODQ3ZS0xOTgyMzMzN2QzYjkiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY5NTIxMzE3MiwidXNlcklkIjoiOWQ2OTI0MTMtNTNiNi00NjY3LTg0N2UtMTk4MjMzMzdkM2I5Iiwicm9sZSI6IiJ9.gAQt0xzVlgQuJcIE7Q7tJCuCzwROVXo1UW2ck13H2mk HTTP/1.1" 200 175
+STREAM b'IHDR' 16 13
+STREAM b'IDAT' 41 1216
+STREAM b'IHDR' 16 13
+STREAM b'IDAT' 41 1216
+Starting new HTTPS connection (1): maps.googleapis.com:443
+https://maps.googleapis.com:443 "GET /maps/api/geocode/json?latlng=40.74964,-3.895804&key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs HTTP/1.1" 200 20042
+Starting new HTTPS connection (1): opendata.aemet.es:443
+https://opendata.aemet.es:443 "GET /opendata/api/prediccion/especifica/municipio/diaria/28082/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmdlbGl0b3JvZ29AaG90bWFpbC5jb20iLCJqdGkiOiI5ZDY5MjQxMy01M2I2LTQ2NjctODQ3ZS0xOTgyMzMzN2QzYjkiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY5NTIxMzE3MiwidXNlcklkIjoiOWQ2OTI0MTMtNTNiNi00NjY3LTg0N2UtMTk4MjMzMzdkM2I5Iiwicm9sZSI6IiJ9.gAQt0xzVlgQuJcIE7Q7tJCuCzwROVXo1UW2ck13H2mk HTTP/1.1" 200 175
+Starting new HTTPS connection (1): maps.googleapis.com:443
+https://maps.googleapis.com:443 "GET /maps/api/geocode/json?latlng=41.135158,-3.580919&key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs HTTP/1.1" 200 25471
+Starting new HTTPS connection (1): opendata.aemet.es:443
+https://opendata.aemet.es:443 "GET /opendata/api/prediccion/especifica/municipio/diaria/28143/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmdlbGl0b3JvZ29AaG90bWFpbC5jb20iLCJqdGkiOiI5ZDY5MjQxMy01M2I2LTQ2NjctODQ3ZS0xOTgyMzMzN2QzYjkiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY5NTIxMzE3MiwidXNlcklkIjoiOWQ2OTI0MTMtNTNiNi00NjY3LTg0N2UtMTk4MjMzMzdkM2I5Iiwicm9sZSI6IiJ9.gAQt0xzVlgQuJcIE7Q7tJCuCzwROVXo1UW2ck13H2mk HTTP/1.1" 200 175
+Starting new HTTPS connection (1): maps.googleapis.com:443
+https://maps.googleapis.com:443 "GET /maps/api/geocode/json?latlng=41.135158,-3.580919&key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs HTTP/1.1" 200 25471
+Starting new HTTPS connection (1): opendata.aemet.es:443
+https://opendata.aemet.es:443 "GET /opendata/api/prediccion/especifica/municipio/diaria/28143/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmdlbGl0b3JvZ29AaG90bWFpbC5jb20iLCJqdGkiOiI5ZDY5MjQxMy01M2I2LTQ2NjctODQ3ZS0xOTgyMzMzN2QzYjkiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY5NTIxMzE3MiwidXNlcklkIjoiOWQ2OTI0MTMtNTNiNi00NjY3LTg0N2UtMTk4MjMzMzdkM2I5Iiwicm9sZSI6IiJ9.gAQt0xzVlgQuJcIE7Q7tJCuCzwROVXo1UW2ck13H2mk HTTP/1.1" 200 175
+Starting new HTTPS connection (1): maps.googleapis.com:443
+https://maps.googleapis.com:443 "GET /maps/api/geocode/json?latlng=41.135158,-3.580919&key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs HTTP/1.1" 200 25471
+Starting new HTTPS connection (1): opendata.aemet.es:443
+https://opendata.aemet.es:443 "GET /opendata/api/prediccion/especifica/municipio/diaria/28143/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmdlbGl0b3JvZ29AaG90bWFpbC5jb20iLCJqdGkiOiI5ZDY5MjQxMy01M2I2LTQ2NjctODQ3ZS0xOTgyMzMzN2QzYjkiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY5NTIxMzE3MiwidXNlcklkIjoiOWQ2OTI0MTMtNTNiNi00NjY3LTg0N2UtMTk4MjMzMzdkM2I5Iiwicm9sZSI6IiJ9.gAQt0xzVlgQuJcIE7Q7tJCuCzwROVXo1UW2ck13H2mk HTTP/1.1" 200 175
+Starting new HTTPS connection (1): maps.googleapis.com:443
+https://maps.googleapis.com:443 "GET /maps/api/geocode/json?latlng=41.135158,-3.580919&key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs HTTP/1.1" 200 25471
+Starting new HTTPS connection (1): opendata.aemet.es:443
+https://opendata.aemet.es:443 "GET /opendata/api/prediccion/especifica/municipio/diaria/28143/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmdlbGl0b3JvZ29AaG90bWFpbC5jb20iLCJqdGkiOiI5ZDY5MjQxMy01M2I2LTQ2NjctODQ3ZS0xOTgyMzMzN2QzYjkiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY5NTIxMzE3MiwidXNlcklkIjoiOWQ2OTI0MTMtNTNiNi00NjY3LTg0N2UtMTk4MjMzMzdkM2I5Iiwicm9sZSI6IiJ9.gAQt0xzVlgQuJcIE7Q7tJCuCzwROVXo1UW2ck13H2mk HTTP/1.1" 200 175
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=54&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=54&format=json&action=query HTTP/1.1" 200 214
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=54&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=54&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 180
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=54&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=54&format=json&action=query HTTP/1.1" 200 417
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=+Calle+de+la+Iglesia&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=+Calle+de+la+Iglesia&format=json&action=query HTTP/1.1" 200 243
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Calle+de+la+Iglesia+%28Segovia%29&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Calle+de+la+Iglesia+%28Segovia%29&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 210
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Calle+de+la+Iglesia+%28Segovia%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Calle+de+la+Iglesia+%28Segovia%29&format=json&action=query HTTP/1.1" 200 531
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=+Somosierra&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=+Somosierra&format=json&action=query HTTP/1.1" 200 220
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Somosierra&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Somosierra&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 189
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Somosierra&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Somosierra&format=json&action=query HTTP/1.1" 200 484
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=revisions&rvprop=content&rvparse=&rvlimit=1&titles=Somosierra&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=revisions&rvprop=content&rvparse=&rvlimit=1&titles=Somosierra&format=json&action=query HTTP/1.1" 200 None
+C:\xampp\htdocs\nuevaApp2\venv-nuevaApp2\Lib\site-packages\wikipedia\wikipedia.py:389: GuessedAtParserWarning: No parser was explicitly specified, so I'm using the best available HTML parser for this system ("html.parser"). This usually isn't a problem, but if you run this code on another system, or in a different virtual environment, it may use a different parser and behave differently.
+
+The code that caused this warning is on line 389 of the file C:\xampp\htdocs\nuevaApp2\venv-nuevaApp2\Lib\site-packages\wikipedia\wikipedia.py. To get rid of this warning, pass the additional argument 'features="html.parser"' to the BeautifulSoup constructor.
+
+  lis = BeautifulSoup(html).find_all('li')
+
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Somosierra+%28Madrid%29&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Somosierra+%28Madrid%29&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 198
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Somosierra+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Somosierra+%28Madrid%29&format=json&action=query HTTP/1.1" 200 487
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=+Madrid&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=+Madrid&format=json&action=query HTTP/1.1" 200 217
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Madrid&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Madrid&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 183
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Madrid&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Madrid&format=json&action=query HTTP/1.1" 200 433
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=+Comunidad+de+Madrid&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=+Comunidad+de+Madrid&format=json&action=query HTTP/1.1" 200 229
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Comunidad+de+Madrid&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Comunidad+de+Madrid&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 196
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Comunidad+de+Madrid&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Comunidad+de+Madrid&format=json&action=query HTTP/1.1" 200 485
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=+Spain&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=+Spain&format=json&action=query HTTP/1.1" 200 218
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Spain&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Spain&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 185
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Spain&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Spain&format=json&action=query HTTP/1.1" 200 466
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=revisions&rvprop=content&rvparse=&rvlimit=1&titles=Spain&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=revisions&rvprop=content&rvparse=&rvlimit=1&titles=Spain&format=json&action=query HTTP/1.1" 200 None
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Little+Spain&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Little+Spain&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 192
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Little+Spain&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Little+Spain&format=json&action=query HTTP/1.1" 200 462
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=+28756&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=+28756&format=json&action=query HTTP/1.1" 200 220
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Gliese+450&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Gliese+450&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 190
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Gliese+450&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Gliese+450&format=json&action=query HTTP/1.1" 200 453
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=+Km.+92&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=+Km.+92&format=json&action=query HTTP/1.1" 200 226
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Sikorsky+S-92&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Sikorsky+S-92&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 193
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Sikorsky+S-92&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Sikorsky+S-92&format=json&action=query HTTP/1.1" 200 466
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=500&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=500&format=json&action=query HTTP/1.1" 200 214
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=500&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=500&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 181
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=500&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=500&format=json&action=query HTTP/1.1" 200 421
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=+Carretera+de+Ir%C3%BAn&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=+Carretera+de+Ir%C3%BAn&format=json&action=query HTTP/1.1" 200 214
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=N-1&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=N-1&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 183
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=N-1&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=N-1&format=json&action=query HTTP/1.1" 200 425
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=+N-I&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=+N-I&format=json&action=query HTTP/1.1" 200 217
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=N-1&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=N-1&format=json&action=query HTTP/1.1" 200 425
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=+4CP9%2B3J&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=+4CP9%2B3J&format=json&action=query HTTP/1.1" 200 130
+Internal Server Error: /ruta/2030
+Traceback (most recent call last):
+  File "C:\xampp\htdocs\nuevaApp2\venv-nuevaApp2\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\nuevaApp2\venv-nuevaApp2\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\nuevaApp2\venv-nuevaApp2\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\xampp\htdocs\nuevaApp2\rutas\views.py", line 435, in ruta_page
+    result = wikipedia.page(busqueda[0])
+                            ~~~~~~~~^^^
+IndexError: list index out of range
+Not Found: /favicon.ico
+Starting new HTTPS connection (1): maps.googleapis.com:443
+https://maps.googleapis.com:443 "GET /maps/api/geocode/json?latlng=40.9509970341,-3.7924243603&key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs HTTP/1.1" 200 30278
+Starting new HTTPS connection (1): maps.googleapis.com:443
+https://maps.googleapis.com:443 "GET /maps/api/geocode/json?latlng=40.9506430663,-3.7921936065&key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs HTTP/1.1" 200 27765
+Starting new HTTPS connection (1): maps.googleapis.com:443
+https://maps.googleapis.com:443 "GET /maps/api/geocode/json?latlng=40.9813298844,-3.8208052330&key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs HTTP/1.1" 200 17479
+Starting new HTTPS connection (1): maps.googleapis.com:443
+https://maps.googleapis.com:443 "GET /maps/api/geocode/json?latlng=42.675950,0.085912&key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs HTTP/1.1" 200 16673
+Starting new HTTPS connection (1): maps.googleapis.com:443
+https://maps.googleapis.com:443 "GET /maps/api/geocode/json?latlng=40.855840,-3.725204&key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs HTTP/1.1" 200 22613
+Starting new HTTPS connection (1): maps.googleapis.com:443
+https://maps.googleapis.com:443 "GET /maps/api/geocode/json?latlng=40.986421,-3.813684&key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs HTTP/1.1" 200 19859
+Starting new HTTPS connection (1): maps.googleapis.com:443
+https://maps.googleapis.com:443 "GET /maps/api/geocode/json?latlng=40.9509970341,-3.7924243603&key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs HTTP/1.1" 200 30278
+Starting new HTTPS connection (1): opendata.aemet.es:443
+https://opendata.aemet.es:443 "GET /opendata/api/prediccion/especifica/municipio/diaria/28076/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmdlbGl0b3JvZ29AaG90bWFpbC5jb20iLCJqdGkiOiI5ZDY5MjQxMy01M2I2LTQ2NjctODQ3ZS0xOTgyMzMzN2QzYjkiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY5NTIxMzE3MiwidXNlcklkIjoiOWQ2OTI0MTMtNTNiNi00NjY3LTg0N2UtMTk4MjMzMzdkM2I5Iiwicm9sZSI6IiJ9.gAQt0xzVlgQuJcIE7Q7tJCuCzwROVXo1UW2ck13H2mk HTTP/1.1" 200 175
+Starting new HTTPS connection (1): maps.googleapis.com:443
+https://maps.googleapis.com:443 "GET /maps/api/geocode/json?latlng=40.9509970341,-3.7924243603&key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs HTTP/1.1" 200 30278
+Starting new HTTPS connection (1): opendata.aemet.es:443
+https://opendata.aemet.es:443 "GET /opendata/api/prediccion/especifica/municipio/diaria/28076/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmdlbGl0b3JvZ29AaG90bWFpbC5jb20iLCJqdGkiOiI5ZDY5MjQxMy01M2I2LTQ2NjctODQ3ZS0xOTgyMzMzN2QzYjkiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY5NTIxMzE3MiwidXNlcklkIjoiOWQ2OTI0MTMtNTNiNi00NjY3LTg0N2UtMTk4MjMzMzdkM2I5Iiwicm9sZSI6IiJ9.gAQt0xzVlgQuJcIE7Q7tJCuCzwROVXo1UW2ck13H2mk HTTP/1.1" 200 175
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 225
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 194
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 472
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Sabinar+de+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Sabinar+de+Lozoya&format=json&action=query HTTP/1.1" 200 223
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 472
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Rio+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Rio+Lozoya&format=json&action=query HTTP/1.1" 200 225
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=R%C3%ADo+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=R%C3%ADo+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 194
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 200 472
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 200 226
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 195
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 200 476
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 400
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 400
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 200 547
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 200 324
+Starting new HTTPS connection (1): maps.googleapis.com:443
+https://maps.googleapis.com:443 "GET /maps/api/geocode/json?latlng=40.9509970341,-3.7924243603&key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs HTTP/1.1" 200 30278
+Starting new HTTPS connection (1): opendata.aemet.es:443
+https://opendata.aemet.es:443 "GET /opendata/api/prediccion/especifica/municipio/diaria/28076/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmdlbGl0b3JvZ29AaG90bWFpbC5jb20iLCJqdGkiOiI5ZDY5MjQxMy01M2I2LTQ2NjctODQ3ZS0xOTgyMzMzN2QzYjkiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY5NTIxMzE3MiwidXNlcklkIjoiOWQ2OTI0MTMtNTNiNi00NjY3LTg0N2UtMTk4MjMzMzdkM2I5Iiwicm9sZSI6IiJ9.gAQt0xzVlgQuJcIE7Q7tJCuCzwROVXo1UW2ck13H2mk HTTP/1.1" 200 175
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 225
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 194
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 472
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Sabinar+de+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Sabinar+de+Lozoya&format=json&action=query HTTP/1.1" 200 223
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 472
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Rio+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Rio+Lozoya&format=json&action=query HTTP/1.1" 200 225
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=R%C3%ADo+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=R%C3%ADo+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 194
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 200 472
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 200 226
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 195
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 200 476
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 400
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 400
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 200 547
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 200 324
+Starting new HTTPS connection (1): maps.googleapis.com:443
+https://maps.googleapis.com:443 "GET /maps/api/geocode/json?latlng=40.9509970341,-3.7924243603&key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs HTTP/1.1" 200 30278
+Starting new HTTPS connection (1): opendata.aemet.es:443
+https://opendata.aemet.es:443 "GET /opendata/api/prediccion/especifica/municipio/diaria/28076/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmdlbGl0b3JvZ29AaG90bWFpbC5jb20iLCJqdGkiOiI5ZDY5MjQxMy01M2I2LTQ2NjctODQ3ZS0xOTgyMzMzN2QzYjkiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY5NTIxMzE3MiwidXNlcklkIjoiOWQ2OTI0MTMtNTNiNi00NjY3LTg0N2UtMTk4MjMzMzdkM2I5Iiwicm9sZSI6IiJ9.gAQt0xzVlgQuJcIE7Q7tJCuCzwROVXo1UW2ck13H2mk HTTP/1.1" 200 175
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 225
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 194
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 472
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Sabinar+de+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Sabinar+de+Lozoya&format=json&action=query HTTP/1.1" 200 223
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 472
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Rio+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Rio+Lozoya&format=json&action=query HTTP/1.1" 200 225
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=R%C3%ADo+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=R%C3%ADo+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 194
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 200 472
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 200 226
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 195
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 200 476
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 400
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 400
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 200 547
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 200 324
+Starting new HTTPS connection (1): maps.googleapis.com:443
+https://maps.googleapis.com:443 "GET /maps/api/geocode/json?latlng=40.9509970341,-3.7924243603&key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs HTTP/1.1" 200 30278
+Starting new HTTPS connection (1): opendata.aemet.es:443
+https://opendata.aemet.es:443 "GET /opendata/api/prediccion/especifica/municipio/diaria/28076/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmdlbGl0b3JvZ29AaG90bWFpbC5jb20iLCJqdGkiOiI5ZDY5MjQxMy01M2I2LTQ2NjctODQ3ZS0xOTgyMzMzN2QzYjkiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY5NTIxMzE3MiwidXNlcklkIjoiOWQ2OTI0MTMtNTNiNi00NjY3LTg0N2UtMTk4MjMzMzdkM2I5Iiwicm9sZSI6IiJ9.gAQt0xzVlgQuJcIE7Q7tJCuCzwROVXo1UW2ck13H2mk HTTP/1.1" 200 175
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 225
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 194
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 472
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Sabinar+de+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Sabinar+de+Lozoya&format=json&action=query HTTP/1.1" 200 223
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 472
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Rio+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Rio+Lozoya&format=json&action=query HTTP/1.1" 200 225
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=R%C3%ADo+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=R%C3%ADo+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 194
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 200 472
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 200 226
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 195
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 200 476
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 400
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 400
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 200 547
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 200 324
+Starting new HTTPS connection (1): maps.googleapis.com:443
+https://maps.googleapis.com:443 "GET /maps/api/geocode/json?latlng=40.9509970341,-3.7924243603&key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs HTTP/1.1" 200 30278
+Starting new HTTPS connection (1): opendata.aemet.es:443
+https://opendata.aemet.es:443 "GET /opendata/api/prediccion/especifica/municipio/diaria/28076/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmdlbGl0b3JvZ29AaG90bWFpbC5jb20iLCJqdGkiOiI5ZDY5MjQxMy01M2I2LTQ2NjctODQ3ZS0xOTgyMzMzN2QzYjkiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY5NTIxMzE3MiwidXNlcklkIjoiOWQ2OTI0MTMtNTNiNi00NjY3LTg0N2UtMTk4MjMzMzdkM2I5Iiwicm9sZSI6IiJ9.gAQt0xzVlgQuJcIE7Q7tJCuCzwROVXo1UW2ck13H2mk HTTP/1.1" 200 175
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 225
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 194
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 472
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Sabinar+de+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Sabinar+de+Lozoya&format=json&action=query HTTP/1.1" 200 223
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 472
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Rio+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Rio+Lozoya&format=json&action=query HTTP/1.1" 200 225
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=R%C3%ADo+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=R%C3%ADo+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 194
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 200 472
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 200 226
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 195
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 200 476
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 400
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 400
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 200 547
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 200 324
+Starting new HTTPS connection (1): maps.googleapis.com:443
+https://maps.googleapis.com:443 "GET /maps/api/geocode/json?latlng=40.9509970341,-3.7924243603&key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs HTTP/1.1" 200 30278
+Starting new HTTPS connection (1): opendata.aemet.es:443
+https://opendata.aemet.es:443 "GET /opendata/api/prediccion/especifica/municipio/diaria/28076/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmdlbGl0b3JvZ29AaG90bWFpbC5jb20iLCJqdGkiOiI5ZDY5MjQxMy01M2I2LTQ2NjctODQ3ZS0xOTgyMzMzN2QzYjkiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY5NTIxMzE3MiwidXNlcklkIjoiOWQ2OTI0MTMtNTNiNi00NjY3LTg0N2UtMTk4MjMzMzdkM2I5Iiwicm9sZSI6IiJ9.gAQt0xzVlgQuJcIE7Q7tJCuCzwROVXo1UW2ck13H2mk HTTP/1.1" 200 175
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 225
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 194
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 472
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Sabinar+de+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Sabinar+de+Lozoya&format=json&action=query HTTP/1.1" 200 223
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 472
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Rio+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Rio+Lozoya&format=json&action=query HTTP/1.1" 200 225
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=R%C3%ADo+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=R%C3%ADo+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 194
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 200 472
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 200 226
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 195
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 200 476
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 400
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 400
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 200 547
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 200 324
+Starting new HTTPS connection (1): maps.googleapis.com:443
+https://maps.googleapis.com:443 "GET /maps/api/geocode/json?latlng=40.9509970341,-3.7924243603&key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs HTTP/1.1" 200 30278
+Starting new HTTPS connection (1): opendata.aemet.es:443
+https://opendata.aemet.es:443 "GET /opendata/api/prediccion/especifica/municipio/diaria/28076/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmdlbGl0b3JvZ29AaG90bWFpbC5jb20iLCJqdGkiOiI5ZDY5MjQxMy01M2I2LTQ2NjctODQ3ZS0xOTgyMzMzN2QzYjkiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY5NTIxMzE3MiwidXNlcklkIjoiOWQ2OTI0MTMtNTNiNi00NjY3LTg0N2UtMTk4MjMzMzdkM2I5Iiwicm9sZSI6IiJ9.gAQt0xzVlgQuJcIE7Q7tJCuCzwROVXo1UW2ck13H2mk HTTP/1.1" 200 175
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 225
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 194
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 472
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Sabinar+de+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Sabinar+de+Lozoya&format=json&action=query HTTP/1.1" 200 223
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 472
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Rio+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Rio+Lozoya&format=json&action=query HTTP/1.1" 200 225
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=R%C3%ADo+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=R%C3%ADo+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 194
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 200 472
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 200 226
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 195
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 200 476
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 400
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 400
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 200 547
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 200 324
+Starting new HTTPS connection (1): maps.googleapis.com:443
+https://maps.googleapis.com:443 "GET /maps/api/geocode/json?latlng=40.9509970341,-3.7924243603&key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs HTTP/1.1" 200 30278
+Starting new HTTPS connection (1): opendata.aemet.es:443
+https://opendata.aemet.es:443 "GET /opendata/api/prediccion/especifica/municipio/diaria/28076/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmdlbGl0b3JvZ29AaG90bWFpbC5jb20iLCJqdGkiOiI5ZDY5MjQxMy01M2I2LTQ2NjctODQ3ZS0xOTgyMzMzN2QzYjkiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY5NTIxMzE3MiwidXNlcklkIjoiOWQ2OTI0MTMtNTNiNi00NjY3LTg0N2UtMTk4MjMzMzdkM2I5Iiwicm9sZSI6IiJ9.gAQt0xzVlgQuJcIE7Q7tJCuCzwROVXo1UW2ck13H2mk HTTP/1.1" 200 175
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 225
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 194
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 472
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Sabinar+de+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Sabinar+de+Lozoya&format=json&action=query HTTP/1.1" 200 223
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 472
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Rio+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Rio+Lozoya&format=json&action=query HTTP/1.1" 200 225
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=R%C3%ADo+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=R%C3%ADo+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 194
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 200 472
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 200 226
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 195
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 200 476
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 400
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 400
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 200 547
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 200 324
+Starting new HTTPS connection (1): maps.googleapis.com:443
+https://maps.googleapis.com:443 "GET /maps/api/geocode/json?latlng=40.9509970341,-3.7924243603&key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs HTTP/1.1" 200 30278
+Starting new HTTPS connection (1): opendata.aemet.es:443
+https://opendata.aemet.es:443 "GET /opendata/api/prediccion/especifica/municipio/diaria/28076/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmdlbGl0b3JvZ29AaG90bWFpbC5jb20iLCJqdGkiOiI5ZDY5MjQxMy01M2I2LTQ2NjctODQ3ZS0xOTgyMzMzN2QzYjkiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY5NTIxMzE3MiwidXNlcklkIjoiOWQ2OTI0MTMtNTNiNi00NjY3LTg0N2UtMTk4MjMzMzdkM2I5Iiwicm9sZSI6IiJ9.gAQt0xzVlgQuJcIE7Q7tJCuCzwROVXo1UW2ck13H2mk HTTP/1.1" 200 175
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 225
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Lozoya+%28Madrid%29&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 194
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 472
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Sabinar+de+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Sabinar+de+Lozoya&format=json&action=query HTTP/1.1" 200 223
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 472
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Rio+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Rio+Lozoya&format=json&action=query HTTP/1.1" 200 225
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=R%C3%ADo+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=R%C3%ADo+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 194
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 200 472
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 200 226
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?list=search&srprop=&srlimit=1&limit=1&srsearch=Valle+del+Lozoya&srinfo=suggestion&format=json&action=query HTTP/1.1" 200 195
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=info%7Cpageprops&inprop=url&ppprop=disambiguation&redirects=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 200 476
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 400
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Lozoya+%28Madrid%29&format=json&action=query HTTP/1.1" 200 400
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=R%C3%ADo+Lozoya&format=json&action=query HTTP/1.1" 200 547
+Starting new HTTP connection (1): es.wikipedia.org:80
+http://es.wikipedia.org:80 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 301 0
+Starting new HTTPS connection (1): es.wikipedia.org:443
+https://es.wikipedia.org:443 "GET /w/api.php?prop=extracts&explaintext=&exintro=&titles=Valle+del+Lozoya&format=json&action=query HTTP/1.1" 200 324
+Starting new HTTPS connection (1): maps.googleapis.com:443
+https://maps.googleapis.com:443 "GET /maps/api/geocode/json?latlng=40.9506430663,-3.7921936065&key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs HTTP/1.1" 200 27765
+Starting new HTTPS connection (1): opendata.aemet.es:443
+https://opendata.aemet.es:443 "GET /opendata/api/prediccion/especifica/municipio/diaria/28076/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmdlbGl0b3JvZ29AaG90bWFpbC5jb20iLCJqdGkiOiI5ZDY5MjQxMy01M2I2LTQ2NjctODQ3ZS0xOTgyMzMzN2QzYjkiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY5NTIxMzE3MiwidXNlcklkIjoiOWQ2OTI0MTMtNTNiNi00NjY3LTg0N2UtMTk4MjMzMzdkM2I5Iiwicm9sZSI6IiJ9.gAQt0xzVlgQuJcIE7Q7tJCuCzwROVXo1UW2ck13H2mk HTTP/1.1" 200 175

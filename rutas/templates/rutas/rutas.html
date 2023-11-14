@@ -1,0 +1,580 @@
+{% extends 'core/base-logado.html' %}
+{% load static %}
+{% block title %}{{title}}{% endblock %}
+{% block content %}
+
+<div class="container-rutas">
+    <h1 class="title-general-logado">{{title}} {% if num_rutas %}(<span id="num_rutas">{{num_rutas}}</span>){% endif %} {% if termino != '' %} - "{{termino}}" {% endif %}</h1>
+    {% if num_rutas %}
+        <h2 class="subtitle-logado">Distancia total: <span id="distancia-total">{{distanciaTotal}}Km</span>  Desnivel total: <span id="desnivel-total">{{desnivelTotal}}m</span></h2>
+    {% endif %}
+
+    {% if totalPaginas == 0 %}
+        <div class="mensajeRutas">
+            <h4 class="mensaje">No hay rutas</h4>
+        </div>
+    {% endif %}
+
+
+    <div class="menu-lateral" id="menu-lateral">
+        <span class="activador-menu-lateral" id="activador-menu-lateral">
+            <h2 class="menu-title">Menu rutas</h2>
+            <img class="icono-menu" src="{% static 'iconos/abrir-menu.png' %}" alt="" id="icono-menu" onclick="abrirMenu()">
+        </span>
+        <hr class="hr-menu">
+        <div class="menu-lateral-contenedor">
+            {% if user.is_staff %}
+            <div class="lista-subir">
+                <h3 class="title-lista-subir" onclick="navegarUrl('/upload')">Subir rutas</h3>
+                <hr class="hr-sub-menu">
+            </div>
+            {% endif %}
+
+            <div class="lista-ordenar">
+                <h3 class="title-lista-ordenar">Ordenar:</h3>
+                <hr class="hr-sub-menu">
+                <ul class="menu-lista">
+                    <li class="menu-item" onclick="ordenar('-fecha_realizacion')">
+                        <a class="item-link">- Fecha</a>
+                    </li>
+                    <li class="menu-item" onclick="ordenar('-desnivel_pos')">
+                        <a class="item-link">- Desnivel</a>
+                    </li>
+                    <li class="menu-item" onclick="ordenar('-distancia_total')">
+                        <a class="item-link">- Longitud</a>
+                    </li>
+                    <li class="menu-item" onclick="ordenar('nombre')">
+                        <a class="item-link">- Alfabético</a>
+                    </li>
+                    <li class="menu-item" onclick="ordenar('-tiempo_total')">
+                        <a class="item-link">- Tiempo</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <ul class="rutas-lista">
+        
+        {% for ruta in rutas %}
+        <li class="ruta-item" onclick="navegarA('{{ruta.ruta.id}}')">
+            <div class="ruta-item-info">
+                <div class="ruta-info">
+                    <h2 class="ruta-title">{{ ruta.ruta.nombre }} </h2>
+                    <span class="span-fecha">{{ ruta.ruta.fecha_realizacion }}</span>
+                </div>
+                <div class="ruta-info-datos">
+                    <a class="ruta-datos">Longitud: {{ruta.longitud}}km</a>
+                    <a class="ruta-datos">Desnivel: {{ruta.desnivel}}m</a>
+                </div> 
+                <div class="ruta-opciones">
+                    <a class="ruta-gpx" href="{% url 'ruta' ruta.ruta.id %}">Detalles</a>
+                    {% if request.user.is_authenticated %}
+                        <a class="ruta-gpx" href="{{ ruta.ruta.trak.url }}">Descargar trak GPX</a>
+                    {% endif %}
+                    
+                </div>
+                
+            </div>
+            <div class="ruta-item-mapa">
+                <div class="ruta-item-mapa-contenedor">
+                    <div class="mapas-tracks" id="mapa-{{ forloop.counter }}" data-ruta-info="{{ ruta.coordenadas|safe }}"></div>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+
+
+
+    {% if totalPaginas > 1 %} <!--poner 2 para pruebas-->
+        <div class="paginador">
+            <div id="loader-paginador" class="loaderPaginador"></div>
+            <button class="btn paginador-flecha" onclick="navegaPaginaE('primera')"><img class="icono-flecha" src="{% static '/iconos/angulo-doble-izquierda.png' %}" alt=""></button>
+            <button class="btn paginador-flecha paginador-left" onclick="navegaPagina(-1)"><img class="icono-flecha" src="{% static '/iconos/angulo-izquierdo.png' %}" alt=""></button>
+            <span id="pagin-actual">{{pagina}}</span><span class="separador-paginas">/</span>{{totalPaginas}}
+            <button class="btn paginador-flecha paginador-right" onclick="navegaPagina(1)"><img class="icono-flecha" src="{% static '/iconos/angulo-derecho.png' %}" alt=""></button>
+            <button class="btn paginador-flecha" onclick="navegaPaginaE('ultima')"><img class="icono-flecha" src="{% static '/iconos/angulo-doble-derecha.png' %}" alt=""></button>
+
+        </div>
+    {% endif %}
+
+</div>
+
+  
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs"></script>
+<!--<script src="{% static 'js/mapas-tracks.js' %}"></script>-->
+
+<script>
+
+    var menuLateral = document.getElementById('menu-lateral');
+    var activadorMenuLateral = document.getElementById('activador-menu-lateral');
+    var iconoMenu = document.getElementById('icono-menu');
+    var termino = '{{termino}}';
+    var csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value;
+    var isAuthenticated = '{{ user.is_authenticated|yesno:"true,false" }}';
+    var isStaff = '{{ user.is_staff|yesno:"true,false" }}';
+    const rutasContainer = document.querySelector('.rutas-lista');
+    var ordenAnterior = '';
+    var orden = '';
+    var tipo;
+    var cambioOrden = false;
+    var loaderGeneralLogado = document.getElementById('loader-general-logado');
+
+    function cambiosCss() {
+
+        if (isAuthenticated == 'true') {
+            if (isStaff == 'false') {
+                menuLateral.style.height = '25.5rem';
+            } else {
+                menuLateral.style.height = '29.35rem';
+            }
+        } else {
+            menuLateral.style.height = '25.5rem';
+        }
+
+        
+    }
+
+    function navegarA(id) {
+
+        loaderGeneralLogado.classList.remove('no-mostrar')
+
+        var url = `/ruta/${id}`
+        window.location.href = url;
+    }
+    
+    function renombrarTitulo() {
+
+
+        let rutaTitle = document.getElementsByClassName('ruta-title');
+
+        for (i = 0; i < rutaTitle.length; i++) {
+            rutaTitle[i].innerHTML = rutaTitle[i].innerHTML.replace(/-/g, ' ');
+        }
+
+
+    }
+
+    function navegarUrl(url) {
+        //var loaderGeneralLogado = document.getElementById('loader-general-logado');
+        window.location.href = url;
+    }
+
+    function inicializarMapasTracks() {
+
+        var mapas = document.getElementsByClassName('mapas-tracks');
+
+
+        for (let i=0; i< mapas.length; i++) {
+
+            coordenadasBrutas = mapas[i].getAttribute('data-ruta-info')
+
+            // Eliminamos los caracteres no deseados y dividimos el string en coordenadas individuales
+            var arrayCoordenadas = coordenadasBrutas.replace(/[\[\]]/g, "").split(", ")
+            
+            const coordenadas = [];
+
+            for (let i = 0; i < arrayCoordenadas.length; i += 2) {
+                const lat = parseFloat(arrayCoordenadas[i].replace('(', ''));
+                const lng = parseFloat(arrayCoordenadas[i + 1].replace(')', ''));
+                coordenadas.push({ lat, lng });
+            }
+
+            // Calcular las coordenadas promedio
+            var sumLat = 0;
+            var sumLng = 0;
+            for (let i = 0; i < coordenadas.length; i++) {
+                sumLat += coordenadas[i].lat;
+                sumLng += coordenadas[i].lng;
+            }
+            const avgLat = sumLat / coordenadas.length;
+            const avgLng = sumLng / coordenadas.length;
+            
+
+            var mapa = new google.maps.Map(document.getElementById(mapas[i].id), {
+                center: { lat: avgLat, lng: avgLng }, // Utiliza la media de las coordenadas para centrar el mapa
+                zoom: 12,
+                mapTypeId: 'hybrid',
+                disableDefaultUI: true,
+                draggable: false,
+                scrollwheel: false,
+            });
+
+            
+
+            
+            var bounds = new google.maps.LatLngBounds();
+            //console.log(bounds)
+
+            // Agrega las coordenadas al objeto 'bounds'
+            for (let j = 0; j < coordenadas.length; j++) {
+                bounds.extend(coordenadas[j]);
+            }
+
+
+            var trackPath = new google.maps.Polyline({
+                path: coordenadas,
+                geodesic: true,
+                strokeColor: '#FFFF00',
+                strokeOpacity: 1.0,
+                strokeWeight: 3
+            });
+
+
+            // Crear marcador verde en la primera coordenada
+            var primerMarcador = new google.maps.Marker({
+                position: coordenadas[0],
+                map: mapa,
+                icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png', // Icono verde
+            });
+
+            // Crear marcador rojo en la última coordenada
+            var ultimoMarcador = new google.maps.Marker({
+                position: coordenadas[coordenadas.length - 1],
+                map: mapa,
+                icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png', // Icono rojo
+            });
+
+
+            trackPath.setMap(mapa);
+            mapa.fitBounds(bounds);
+            
+
+        }
+
+    }
+
+    function navegaPaginaE(pag) {
+
+        var currentUrl = window.location.href;
+        var parts = currentUrl.split("?pag=");
+        var busqueda;
+        var url;
+        var totalPaginas = '{{totalPaginas}}';
+        var termino = '{{termino}}';
+        var paginaActual = 0;
+        var pagina = 0;
+
+        if (orden == '') {
+            tipo = '{{tipo}}'
+        } else {
+            tipo = orden
+        }
+
+
+        if ( pag == 'primera') {
+            paginaActual = 0
+        }
+
+        if ( pag == 'ultima') {
+            paginaActual = totalPaginas - 1
+        }
+        
+        url = `${parts[0]}?pag=${paginaActual}`
+
+        if (termino ) {
+            url = `${parts[0]}?pag=${paginaActual}&termino=${termino}`
+        }
+
+        if (tipo) {
+            url = `${parts[0]}?pag=${paginaActual}&tipo=${tipo}`
+        }
+
+        if (termino && tipo) {
+            url = `${parts[0]}?pag=${paginaActual}&termino=${termino}&tipo=${tipo}`
+        }
+        
+        window.location.href = url;
+
+    }
+
+    function navegaPagina(i) {
+
+        var currentUrl = window.location.href;
+        var parts = currentUrl.split("?pag=");
+        var busqueda;
+        var url;
+        var totalPaginas = '{{totalPaginas}}';
+        var termino = '{{termino}}';
+        var paginaActual = '{{pagina}}'
+        
+        if (orden == '') {
+            tipo = '{{tipo}}'
+        } else {
+            tipo = orden
+        }
+        
+
+        if (currentUrl.includes('?pag=')) {
+            pagina = parseInt(parts[1], 10);
+        } else {
+            pagina = 0
+        }
+
+        if (paginaActual == 1) {
+            pagina = 0
+        }
+
+        if(cambioOrden) {
+            pagina = 0
+        }
+
+
+        pagina = pagina + i;
+
+
+        if (pagina == totalPaginas) {
+            pagina = 0;
+        }
+
+        if (pagina < 0) {
+            pagina = totalPaginas - 1;
+        }
+
+        
+
+        
+
+
+        url = `${parts[0]}?pag=${pagina}`
+
+        if (termino) {
+            url = `${parts[0]}?pag=${pagina}&termino=${termino}`
+        }
+
+        if (tipo) {
+            url = `${parts[0]}?pag=${pagina}&tipo=${tipo}`
+        }
+
+        if (termino && tipo) {
+            url = `${parts[0]}?pag=${pagina}&termino=${termino}&tipo=${tipo}`
+        }
+        
+        cambioOrden = false;
+        window.location.href = url;
+
+    }
+
+    function abrirMenu() {
+        menuLateral.style.left = '-2rem';
+        menuLateral.style.boxShadow = "4px 7px 13px -2px var(--sombra)";
+        if (screen.width < 768) {
+            menuLateral.style.width = '106%';
+        }
+        
+        activadorMenuLateral.style.boxShadow = 'unset';
+        activadorMenuLateral.style.width = '100%';
+        iconoMenu.src = "{% static 'iconos/cerrar-menu.png' %}"
+        iconoMenu.onclick = function() {
+            cerrarMenu();
+        };
+    }
+
+    function cerrarMenu() {
+        menuLateral.style.left = '-22rem';
+        menuLateral.style.boxShadow = 'unset';
+        if (screen.width < 768) {
+            menuLateral.style.width = '22rem';
+        }
+        activadorMenuLateral.style.boxShadow = "4px 7px 13px -2px var(--sombra)";
+        activadorMenuLateral.style.width = '119%';
+        iconoMenu.src = "{% static 'iconos/abrir-menu.png' %}"
+        iconoMenu.onclick = function() {
+            abrirMenu();
+        };
+    }
+
+    function ordenar(tipo) {
+
+        cerrarMenu();
+
+        var data = {
+            tipo: tipo,
+            termino: termino
+        };
+        
+        // Realizar la petición POST
+        fetch('/rutas', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())  // Parsear la respuesta como JSON
+        .then(data => {
+            
+            console.log('Respuesta del servidor:', data);
+            orden = data.tipo
+            cambioOrden = true;
+
+            // Actualizar elementos del DOM con los datos recibidos
+            
+            document.getElementById('distancia-total').textContent = data.distanciaTotal + 'km';
+            document.getElementById('desnivel-total').textContent = data.desnivelTotal + 'm';
+            document.getElementById('num_rutas').textContent = data.num_rutas;
+            if (document.getElementById('pagin-actual')) {
+                document.getElementById('pagin-actual').textContent = data.pagina;
+            }
+                        
+
+            // Actualizar la lista de rutas
+            
+            rutasContainer.innerHTML = ''; // Limpiar la lista existente
+
+            for (let i = 0; i < data.rutas.length; i++) {
+                var ruta = data.rutas[i];
+                var li = document.createElement('li');
+                li.classList.add('ruta-item');
+                
+                let id = ruta.id;
+
+                li.onclick = function() {
+                    navegarA(id);
+                };
+                
+                /*renombrar titulo track*/
+                ruta.nombre = ruta.nombre.replace(/-/g, ' ');
+
+                li.innerHTML = `
+                    <div class="ruta-item-info">
+                        <div class="ruta-info">
+                            <h2 class="ruta-title">${ruta.nombre}</h2>
+                            <span class="span-fecha">${ruta.fecha_realizacion}</span>
+                        </div>
+                        <div class="ruta-info-datos">
+                            <a class="ruta-datos">Longitud: ${ruta.distancia_total}km</a>
+                            <a class="ruta-datos">Desnivel: ${ruta.desnivel_pos}m</a>
+                        </div>
+                        <div class="ruta-opciones">
+                            <a class="ruta-gpx" href="/ruta/${ruta.id}" >Detalles</a>
+                            ${isAuthenticated ? `<a class="ruta-gpx" href="${ruta.trak}">Descargar trak GPX</a>` : ''}
+                        </div>
+                    </div>
+                    <div class="ruta-item-mapa">
+                        <div class="ruta-item-mapa-contenedor">
+                            <div class="mapas-tracks" id="mapa-${i+1}" data-ruta-info="${ruta.puntos}"></div>
+                        </div>
+                    </div>
+                `;
+
+
+                rutasContainer.appendChild(li);
+
+
+                /*inicializar cada mapa*/
+                var arrayCoordenadas = ruta.puntos.replace(/[\[\]]/g, "").split(", ");
+
+                const coordenadas = [];
+
+                for (let i = 0; i < arrayCoordenadas.length; i += 2) {
+                    const lat = parseFloat(arrayCoordenadas[i].replace('(', ''));
+                    const lng = parseFloat(arrayCoordenadas[i + 1].replace(')', ''));
+                    coordenadas.push({ lat, lng });
+                }
+
+                // Calcular las coordenadas promedio
+                var sumLat = 0;
+                var sumLng = 0;
+                for (let i = 0; i < coordenadas.length; i++) {
+                    sumLat += coordenadas[i].lat;
+                    sumLng += coordenadas[i].lng;
+                }
+                const avgLat = sumLat / coordenadas.length;
+                const avgLng = sumLng / coordenadas.length;
+
+                var mapa = new google.maps.Map(document.getElementById(`mapa-${i+1}`), {
+                    center: { lat: avgLat, lng: avgLng }, // Utiliza la media de las coordenadas para centrar el mapa
+                    zoom: 12,
+                    mapTypeId: 'hybrid',
+                    disableDefaultUI: true,
+                    draggable: false,
+                    scrollwheel: false,
+                });
+
+                var bounds = new google.maps.LatLngBounds();
+                //console.log(bounds)
+
+                // Agrega las coordenadas al objeto 'bounds'
+                for (let j = 0; j < coordenadas.length; j++) {
+                    bounds.extend(coordenadas[j]);
+                }
+
+
+                var trackPath = new google.maps.Polyline({
+                    path: coordenadas,
+                    geodesic: true,
+                    strokeColor: '#FFFF00',
+                    strokeOpacity: 1.0,
+                    strokeWeight: 3
+                });
+
+
+                // Crear marcador verde en la primera coordenada
+                var primerMarcador = new google.maps.Marker({
+                    position: coordenadas[0],
+                    map: mapa,
+                    icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png', // Icono verde
+                });
+
+                // Crear marcador rojo en la última coordenada
+                var ultimoMarcador = new google.maps.Marker({
+                    position: coordenadas[coordenadas.length - 1],
+                    map: mapa,
+                    icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png', // Icono rojo
+                });
+
+
+                trackPath.setMap(mapa);
+                mapa.fitBounds(bounds);
+
+            }
+
+
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
+
+        
+
+
+    }
+
+
+    menuLateral.addEventListener("mouseout", function(event) {
+
+        if (event.relatedTarget !== this && !this.contains(event.relatedTarget)) { //comprueba si salio ralmente 
+            event.stopPropagation();
+            cerrarMenu();
+        }
+
+    });
+
+    cambiosCss();
+    inicializarMapasTracks();
+    renombrarTitulo();
+
+    window.addEventListener('scroll', function() {
+        let scrollPos = window.scrollY;
+
+        if (scrollPos > 128) {
+            if (screen.width > 768) {
+                menuLateral.style.top = '6%';
+            }
+            
+        } else {
+            if (screen.width > 768) {
+                menuLateral.style.top = '18%';
+            }
+        }
+
+    });
+    
+</script>
+{% endblock %}
+

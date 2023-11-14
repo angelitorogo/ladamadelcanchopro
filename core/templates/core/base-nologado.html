@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>La Dama del Cancho | {% block title %}{% endblock %}</title>
+    
+    <!-- Estilos -->
+    <link href="{% static 'css/normalize.css' %}" rel="stylesheet">
+    <link href="{% static 'css/globales.css' %}" rel="stylesheet">
+    <link href="{% static 'css/estilos.css' %}" rel="stylesheet">
+    <link href="{% static 'css/mostrar.css' %}" rel="stylesheet">
+
+    <!--favicon-->
+    <link rel="icon" type="image/png" sizes="16x16"  href="{% static 'favicons/favicon-16x16.png' %}">
+
+
+    <!--Fuentes-->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+</head>
+
+
+<body class="body-nologado" id="body-no-logado">
+
+    <!-- Contenido -->
+    <section class="contenedor-no-logado">
+        <div id="loader-general" class="loaderGeneral"></div>
+        {% block content %}{% endblock %}
+    </section>
+
+    <script>
+        var loaderGeneral = document.getElementById('loader-general');
+        var bodyNoLogado = document.getElementById('body-no-logado');
+
+        //bodyNoLogado.style.backgroundColor = 'var(--back-ground)';
+
+        window.addEventListener('scroll', function() {
+            var scrollY = window.scrollY || window.pageYOffset;
+            var windowHeight = window.innerHeight;
+    
+            // Calculamos el nuevo valor del top
+            var newTop = scrollY + (windowHeight / 2) - 183;
+    
+            // Asignamos el nuevo valor al estilo del loader
+            loaderGeneral.style.top = newTop + 'px';
+        });
+
+
+    </script>
+
+</body>
+</html>

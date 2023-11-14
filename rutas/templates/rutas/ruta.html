@@ -1,0 +1,1038 @@
+{% extends 'core/base-logado.html' %}
+{% load static %}
+{% block title %}{{title}}{% endblock %}
+{% block content %}
+
+<div>
+    <div id="modal" class="modal">
+
+        <div class="modal-contenedor">
+            <p class="modal-texto">Ruta: <span class="modal-texto-span" id="modal-texto-span">{{ruta.nombre}}</span></p>
+            <hr>
+            <p class="modal-texto">¿Estás seguro de eliminar esta ruta?</p>
+            <div class="opciones-modal">
+                <button class="btn btn-success" onclick="aceptarBorrado('{{ruta.id}}')">Aceptar</button>
+                <button class="btn btn-success color-red" onclick="cancelarBorrado()">Cancelar</button>
+            </div>
+            
+        </div>
+
+    </div>
+
+    <h1 class="title-general-logado"><span id="name-ruta"> {{ruta.nombre}}</span> <br>
+        <span id="fecha-ruta"></span></h1>
+
+    <div class="ruta-contenedor">
+
+        <div class="mapaYperfil">
+            <div class="mapa-track">
+                <div id="mapa" data-ruta-info="{{ track|safe }}" style="width: 100%; height: 100%"></div>
+            </div>
+            <div class="mapa-perfil">
+                <canvas id="perfilChart" class="mapa-perfil-canvas"></canvas>
+            
+                    <div class="mapa-info-altitud no-mostrar" id="id_altitud">
+                        <p class="mapa-info-texto">
+                            
+                        </p>
+                    </div>
+                    <div class="linea-negra no-mostrar" id="linea_negra"></div>
+                    <div class="linea-negra no-mostrar" id="linea_negra2"></div>
+                    <div class="mapa-info-distancia no-mostrar" id="id_distancia">
+                        <p class="mapa-info-texto">
+                            
+                        </p>
+                    </div>
+            </div>
+        </div>
+        
+        <div class="ruta-track">
+            
+                <div class="ruta-detalles">
+                    <h2 class="title-track label-upload-detalles">Detalles</h2>
+
+                    <div class="ruta-track-info">
+                        <div class="track-info-izq">
+                            <div class="info-group">
+                                <p class="info-item">Distancia</p>
+                                <p class="info-dato">{{longitud}}km</p>
+                            </div>
+                            <div class="info-group">
+                                <p class="info-item">Desnivel positivo</p>
+                                <p class="info-dato">{{des_pos}}m</p>
+                            </div>
+                            <div class="info-group">
+                                <p class="info-item">Desnivel negativo</p>
+                                <p class="info-dato">{{des_neg}}m</p>
+                            </div>
+                        </div>
+                        <div class="track-info-dcha">
+                            <div class="info-group">
+                                <p class="info-item">Altitud máxima</p>
+                                <p class="info-dato">{{max_alt}}m</p>
+                            </div>
+                            <div class="info-group">
+                                <p class="info-item">Altitud mínima</p>
+                                <p class="info-dato">{{min_alt}}m</p>
+                            </div>
+                            <div class="info-group">
+                                <p class="info-item">Tiempo total</p>
+                                <p class="info-dato">{{tiempo_total}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="eltiempo">
+                    <h2 class="eltiempo_titulo" >El tiempo en {{municipioMeteo}}</h2>
+                    <div id="loader-tiempo" class="loader"></div>
+                    <div class="eltiempo_data" id="el-tiempo-data">
+                        <table id="tabla-tiempo">
+                            <thead>
+                                <tr>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="eltiempo_atribuciones">
+                        <p class="datos_clima">Datos obtenidos de la Agencia Estatal de Meteorología <a class="datos_clima" href="https://www.aemet.es/" title="AEMET">(AEMET) </a></p>
+            
+                        <!--<a class="datos_clima" href="https://www.flaticon.es/iconos-gratis/dom" title="dom iconos">Dom iconos creados por iconixar - Flaticon, </a>
+                        <a class="datos_clima" href="https://www.freepik.es/icono/computacion-nube_3208676#term=weather&page=1&track=ais">Freepik</a>
+                        <a class="datos_clima" href="https://www.freepik.es/icono/nublado_1248007#term=weather+calima&page=1&track=ais">e Icongeek26</a>-->
+                    </div>
+                </div>
+            
+                <div class="comoLlegar">
+                    <h2 class="comoLlegar-titulo">Como llegar al punto de inicio:</h2>
+                    <div class="grupo-como">
+                        <input type="text" class="input-como" placeholder="Dirección de inicio" id="input-direccion">
+                        <button class="btn btn-como" onclick="abrirRutaEnGoogleMaps()">Obtener ruta</button>
+                    </div>
+                </div>
+        
+        </div>
+
+            
+        
+    </div>
+    <div class="contenedor-descripcion" id="cont-desc">
+        
+        <div class="descripcion">
+            <h2 class="title-track label-descripcion">Descripción</h2>
+            {% if 'updatedDesc' in request.GET %}
+                <p class="mensaje-registration success success-desc" id="success-upload">Descripción actualizada</p>
+            {% endif %}
+            <p class="descripcion-track">{{ruta.descripcion|linebreaksbr}}</p>
+            <div class="opciones-descripcion" id="ruta-gpx">
+                <a class="ruta-gpx" href="{{ ruta.trak.url }}" >Descargar trak GPX</a>
+                {% if user.is_staff %}
+                    <a class="ruta-editar" href="{% url 'editar-ruta' ruta.id %}">Editar</a> <!--onclick="cargarLoader()"-->
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="uploads-claves">
+            <div class="ruta-track-uploads" id="file-uploads">
+                <label class="label-upload" for="ulpolad">Sube archivos a la ruta</label>
+        
+                <div id="loader" class="loader"></div>
+        
+                <label class="label-error error center no-mostrar" id="error-imagenes">Revise selección imágenes</label>
+                <label class="label-error error center no-mostrar" id="error-videos">Revise selección videos</label>
+                {% if 'uploaded' in request.GET %}
+                    <label class="label-error success center" id="success-upload">Archivos subidos</label>
+                {% endif %}
+        
+                <form action="" method="post" enctype="multipart/form-data" id="myForm">{% csrf_token %}
+                    <div class="uploads-group">
+                        <label class="label-imagen" for="video">Seleccione imágenes</label>
+                        <input type="file" name="imagen" accept=".jpg, .jpeg, .png" class="formulario-input input-file" multiple id="id_imagenes" onchange="ImagenesSeleccionadas(event)">
+                    </div>
+                
+                    <div class="uploads-group">
+                        <label class="label-imagen" for="video">Seleccione Videos</label>
+                        <input type="file" name="video" accept=".mp4" class="formulario-input input-file" multiple id="id_videos" onchange="videosSeleccionados(event)">
+                    </div>
+                    
+                    <input type="submit" class="btn btn-success" value="Aceptar" id="submitButton" disabled onclick="subirArchivo()">
+                </form>
+            
+            </div>
+            <div class="claves-editar" id="editar-claves">
+                <label class="label-upload label-claves" for="ulpolad">Edita claves de la ruta</label>
+                <p class="mensaje-registration success no-mostrar" id="mensaje-claves">Claves guardadas</p>
+                <div class="contenedor-lista-claves">
+                    <ul class="lista-claves" id="lista-claves">
+                        
+                    </ul>
+                </div>
+                <div class="uploads-group">
+                    <label for="clave" class="label-imagen">Nueva clave</label>
+                    <input type="text" name="clave" class="formulario-input" id="input-clave">
+                </div>
+                <div class="opciones-claves">
+                    <button class="btn btn-success" onclick="aceptarNuevaClave()">Aceptar</button>
+                    <button class="btn btn-success" onclick="guardarClaves()">Guardar</button>
+                </div>
+                
+
+            </div>
+        </div>
+        
+    </div>
+
+    <!--Contenedor de imagenes y videos-->
+    {% if imagenes or videos %}
+        <div class="contenedor-imagenes">
+            {% if imagenes %}
+                <h2 class="title-track label-archivos">Imagenes ({{imagenes|length}})</h2>
+            {% endif %}
+            <div class="imagenes">
+                {% for imagen in imagenes %} 
+                    {% if forloop.counter <= 6 %}
+                        <div class="imagen" onclick="carousel('{{imagen.imagen.url}}', null)">
+                            <img class="cursor" src="{{imagen.imagen.url}}" alt="">
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% if videos %}
+                <h2 class="title-track label-archivos">Videos ({{videos|length}})</h2>
+            {% endif %}
+            <div class="imagenes" >
+                {% for video in videos %} 
+                    {% if forloop.counter <= 6 %}
+                        <div class="imagen" onclick="carousel(null, '{{video.video.url}}')">
+                            <img class="miniaturas cursor" src="{{video.video.url}}" alt="" id="miniatura-path">
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="comentarios-wiki">
+        <div class="contenedor-comentarios" id="contenedor-comentarios">
+
+            <div id="loader-comentarios" class="loaderComentarios"></div>
+
+            <h2 class="title-track label-archivos label-cercanas">Comentarios</h2>
+    
+            {% if 'comment' in request.GET %}
+                <label class="label-error success center db" id="success-upload">Comentario añadido</label>
+            {% endif %}
+    
+            {% if comentarios|length == 0 %} 
+                <p class="mensaje-comentarios">No hay comentarios</p>
+            {% endif %}
+    
+            <div class="comentarios">
+                {% for comentario in comentarios %}
+                <div class="comentario">
+                    <h4 class="comentario-usuario">{{comentario.usuario}}:</h4>
+                    <p class="comentario-texto">
+                        {{comentario.texto}}
+                    </p>
+                    <span class="comentario-fecha">{{comentario.fecha_created}}</span>
+                </div>
+            {% endfor%}
+            </div>
+    
+            <div class="form-comentario">
+                <form action="" method="post" enctype="multipart/form-data" id="myFormComentario">{% csrf_token %}
+                    <div class="form-group-comentario">
+                        <label class="form-comentario-titulo">Haz tu comentario como "{{request.user}}"</label>
+                        <textarea name="comment" class="formulario-input input-textarea area-email area-comentario" rows="4" cols="150" id="texto-content" oninput="cambiosContent(event)"></textarea>
+                    </div>
+                    <input type="submit" class="btn btn-success btn-form-comentario" id="submit-button" value="Aceptar" disabled onclick="activarLoaderComentarios()">
+                </form>
+            </div>
+    
+        </div>
+
+        <div class="contenedor-wiki">
+            <h2 class="title-track label-archivos label-cercanas">Wikipedia</h2>
+
+            {% if wiki_data %}
+                {% for busqueda in wiki_data %}
+                    <div class="busqueda_wiki">
+                        <h3 class="busqueda_title">{{ forloop.counter }}. {{busqueda.info.title}}</h3>
+                        <p class="busqueda_texto">{{busqueda.info.summary}}</p>
+                        <a class="busqueda_url" target="_blank" href="{{busqueda.info.url}}">Mas información...</a>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="mensaje-wiki">No hay datos de wikipedia</p>
+            {% endif %}
+            
+
+
+        </div>
+
+    </div>
+    
+
+
+    {% if num_rutas > 0 %}
+    <div class="rutas-cercanas" id="rutas-cercanas">
+        <h2 class="title-track label-archivos label-cercanas">Rutas cercanas</h2>
+
+        <div class="contenedor-rutas-cercanas">
+
+            <button class="btn btn-flecha-cercana" onclick="carruselRutas(-1)"><img class="icono-flecha flecha-cercanas" src="{% static '/iconos/angulo-izquierdo.png' %}" alt=""></button>
+            
+            <div class="contenedor-lista-rutas-cercanas" id="contenedor-scroll">
+                <div class="lista-rutas-cercanas" id="lista-rutas-cercanas">
+    
+                    {% for ruta in rutas_con_coordenadas %}
+                        <div class="ruta-cercana"  onclick="navegarA('{{ruta.id}}')">
+                            <div class="ruta-item-info info-cercanas">
+                                <div class="ruta-info">
+                                    <h2 class="ruta-title">{{ ruta.ruta }} </h2>
+                                </div>
+                                <div class="ruta-info-datos info-datos-cercanas">
+                                    <a class="ruta-datos">Longitud: {{ruta.distancia}}km</a>
+                                    <a class="ruta-datos">Desnivel: {{ruta.desnivel}}m</a>
+                                    <a class="ruta-datos">A: {{ruta.cercania}}Km</a>
+                                </div>                 
+                            </div>
+                            <div class="ruta-item-mapa mapa-cercano">
+                                <div class="ruta-item-mapa-contenedor">
+                                    <div class="mapas-tracks" id="mapa-{{ forloop.counter }}" data-ruta-info="{{ ruta.puntos|safe }}"></div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+        
+                </div>
+            </div>
+
+            <button class="btn btn-flecha-cercana" onclick="carruselRutas(1)"><img class="icono-flecha flecha-cercanas" src="{% static '/iconos/angulo-derecho.png' %}" alt=""></button>
+            
+        </div>
+
+    </div>
+    {% endif %}
+
+
+    {% if user.is_staff %}
+        <a class="btn-eliminar" onclick="eliminar()">Eliminar ruta</a>
+    {% endif %}
+
+
+    <!--carrusel de imagenes y videos-->
+    <div id="modalContainer" class="modal-container">
+                
+        <span class="close-modal-button" onclick="cerrarModal()">&times;</span>
+        <div id="loader-carrusel" class="loaderCarrusel"></div>
+        <div id="modalContent" class="modal-content">
+            
+            <div class="carrusel-imagen">
+                <img class="carrusel no-mostrar" src="" alt="" id="imagenCarrusel">
+                <video class="carrusel no-mostrar" id="videoCarrusel" src="" controls>
+                    Tu navegador no soporta la reproducción de video.
+                </video>
+                
+                
+                <button class="boton atras" onclick="adelanteAtras(-1)"><img class="icono-flecha" src="{% static '/iconos/angulo-izquierdo-blanco.png' %}" alt=""></button>
+                <button class="boton delante" onclick="adelanteAtras(1)"><img class="icono-flecha" src="{% static '/iconos/angulo-derecho-blanco.png' %}" alt=""></button>
+            </div>
+
+        </div>
+
+    </div>
+        
+</div>
+
+
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var altitudesString = '{{ altitudes|safe }}';
+    var distancesString = '{{ distances|safe }}';
+    var archivosString = '{{ archivos|escapejs }}';
+    var imagenesString = '{{ imagenes_serializable|escapejs }}';
+    var videosString = '{{ videos_serializable|escapejs }}';
+    var iconoRedondoAzul = {
+        url: '{% static "iconos/dot.png" %}',
+        size: new google.maps.Size(32, 32), 
+        origin: new google.maps.Point(0, 0), 
+        anchor: new google.maps.Point(16, 16)
+    };
+
+    var comentariosString = '{{ comentarios_json|escapejs }}';
+    var arrayComentariosString = comentariosString.replace(/'/g, "\"");
+    var comentarios = JSON.parse(arrayComentariosString);
+    //console.log(comentarios)
+        
+</script>
+<script src="{% static 'js/mapa-track.js' %}"></script>
+
+<script>
+
+    var url = '{{clima}}';
+    var userStaff = '{{user.is_staff}}';
+    var user = '{{request.user}}';
+    var contDesc = document.getElementById('cont-desc');
+    var fileUploads = document.getElementById('file-uploads');
+    var editarClaves = document.getElementById('editar-claves');
+    var fechaRuta = '{{fechaRuta}}';
+    var spanFecha = document.getElementById('fecha-ruta');
+    var semana = [];
+    var encabezadosTabla = [];
+    var clavesString = '{{ruta.claves}}';
+    var clavesArray = clavesString.split(",:");
+    clavesArray.pop()
+    var claves = [];
+    var listaClaves = document.getElementById('lista-claves');
+    var Modal = document.getElementById('modal');
+    var modalTextoSpan = document.getElementById('modal-texto-span');
+    var mensajeClaves = document.getElementById('mensaje-claves');
+    var rutaGpx = document.getElementById('ruta-gpx');
+    var origen = '{{ruta.inicio}}';
+    var rutasCercanas = '{{rutas_json|escapejs}}';
+    // Parseamos la cadena como JSON
+    rutasCercanas = JSON.parse(rutasCercanas);
+    //console.log(rutasCercanas)
+    var contenedorImagenes = document.getElementsByClassName('contenedor-imagenes')
+    var contenedorScroll = document.getElementById('contenedor-scroll');
+    var contenedorComentarios = document.getElementById('contenedor-comentarios');
+    var comentarios = document.getElementsByClassName('comentario');
+    var loaderGeneralLogado = document.getElementById('loader-general-logado');
+    var loaderComentarios = document.getElementById('loader-comentarios');
+
+
+    function activarLoaderComentarios() {
+        loaderComentarios.classList.add('mostrar');
+    }
+
+    function validarCampos() {
+
+        var submitButton = document.getElementById('submit-button');
+        var textoContent = document.getElementById('texto-content');
+       
+        var content = textoContent.value;
+      
+        var contentValido = content.length >= 5;
+    
+        if (contentValido) {
+            submitButton.removeAttribute('disabled');
+            return true;
+        } else {
+            submitButton.setAttribute('disabled', 'true');
+            return false;
+        }
+    }
+
+    function cambiosContent(event) {
+        validarCampos();
+    }
+    
+    function abrirRutaEnGoogleMaps() {
+
+        var inputDireccion = document.getElementById('input-direccion').value;
+
+
+        if (inputDireccion != '') {
+
+            var direccionOrigen = inputDireccion;
+            var direccionDestino = origen;
+            
+            var url = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(direccionOrigen)}&destination=${direccionDestino.lat},${direccionDestino.lng}`;
+            
+            window.open(url, '_blank');
+
+            document.getElementById('input-direccion').value = ''
+
+        }
+
+    }
+
+    function aceptarNuevaClave() {
+
+        let inputClave = document.getElementById('input-clave');
+
+        if (inputClave.value == '') {
+            return
+        }
+
+        // Crea un nuevo elemento li
+        let liElement = document.createElement('li');
+        liElement.classList.add('item-clave');
+
+        // Crea un elemento p
+        let pElement = document.createElement('p');
+        pElement.classList.add('clave');
+        pElement.innerHTML = inputClave.value; // Asigna el contenido
+
+        // Crea un elemento img
+        let imgElement = document.createElement('img');
+        imgElement.classList.add('icono-clave');
+        imgElement.src = "{% static 'iconos/eliminar.png' %}";
+        imgElement.alt = "";
+        // Asigna el evento onclick
+        imgElement.addEventListener('click', borrarClave);
+
+        // Añade el elemento p e img al li
+        liElement.appendChild(pElement);
+        liElement.appendChild(imgElement);
+
+        // Añade el li al ul
+        listaClaves.appendChild(liElement);
+
+        claves.push(inputClave.value)
+
+        inputClave.value = ''
+
+
+
+    }
+
+    function configuracionInicial() {
+
+        modalTextoSpan.innerHTML = modalTextoSpan.innerHTML.replace(/-/g, ' ');
+
+        if (screen.width < 600) {
+            spanFecha.innerHTML = '(' + convertirFecha(fechaRuta) + ')'
+        } else {
+            spanFecha.innerHTML = '(' + fechaRuta + ')'
+        }
+    
+        if (userStaff === 'False') {
+
+            if (contenedorImagenes.length != 0) {
+                contenedorImagenes[0].style.margin = '1rem auto 0 auto';
+            }
+            
+            fileUploads.classList.add('no-mostrar');
+            editarClaves.classList.add('no-mostrar');
+            contDesc.classList.add('unicaColumn');
+            rutaGpx.classList.add('opciones-descripcion-no-staff');
+
+           
+            
+
+        } else {
+            //contenedorComentarios.style.margin = '1rem auto';
+        }
+    
+        if (url != 'KO') {
+           
+            loaderTiempo.classList.add('mostrar');
+            // Hacer la solicitud a la API
+            solicitudAemet(url)
+    
+        } else {
+            //No se pudo recuperar el tiempo
+            var elTiempoData = document.getElementById('el-tiempo-data');
+            var tablaTiempo = document.getElementById('tabla-tiempo');
+            elTiempoData.removeChild(tablaTiempo)
+            var nuevoElemento = document.createElement('p');
+            nuevoElemento.textContent = 'No se pudo recuperar la información del tiempo';
+            elTiempoData.appendChild(nuevoElemento)
+        }
+
+        for(let i = 0; i < clavesArray.length; i++) {
+
+            //console.log(clavesArray[i])
+
+            if (clavesArray[i] != '') {
+
+                if ( !(/\d/.test(clavesArray[i])) ){
+
+                    if (/^\s/.test(clavesArray[i])) {
+                        clavesArray[i] = clavesArray[i].replace(' ', '')
+                        
+                    }
+
+                    claves.push(clavesArray[i])
+
+                }
+
+                if (((/[a-zA-Z]/.test(clavesArray[i]) && /\d/.test(clavesArray[i])))) {
+
+                    if (/^\s/.test(clavesArray[i])) {
+
+                        clavesArray[i] = clavesArray[i].replace(' ', '')
+                        
+                    }
+
+                    claves.push(clavesArray[i])
+
+                }
+
+                
+            }
+
+           
+     
+        }
+
+        // Removemos los paréntesis y dividimos la cadena en latitud y longitud
+        var coordenadasArray = origen.slice(1, -1).split(', ');
+    
+        // Convertimos las cadenas a números
+        var latitud = parseFloat(coordenadasArray[0]);
+        var longitud = parseFloat(coordenadasArray[1]);
+
+        // Creamos el objeto de coordenadas
+        origen = {lat: latitud, lng: longitud};
+        
+        crearListaClaves();
+
+
+        
+
+
+    }
+
+    function crearListaClaves() {
+
+
+        for(let i = 0; i < claves.length; i++) {
+
+            // Crea un nuevo elemento li
+            let liElement = document.createElement('li');
+            liElement.classList.add('item-clave');
+
+            // Crea un elemento p
+            let pElement = document.createElement('p');
+            pElement.classList.add('clave');
+            pElement.innerHTML = claves[i]; // Asigna el contenido
+
+            // Crea un elemento img
+            let imgElement = document.createElement('img');
+            imgElement.classList.add('icono-clave');
+            imgElement.src = "{% static 'iconos/eliminar.png' %}";
+            imgElement.alt = "";
+            // Asigna el evento onclick
+            imgElement.addEventListener('click', borrarClave);
+
+            // Añade el elemento p e img al li
+            liElement.appendChild(pElement);
+            liElement.appendChild(imgElement);
+
+            // Añade el li al ul
+            listaClaves.appendChild(liElement);
+            
+                
+        }
+    }
+
+    function borrarClave(event) {
+        let liElement = event.target.parentNode;
+        let pElement = liElement.querySelector('p');
+        let valorABorrar = pElement.innerHTML;
+
+        let indice = claves.indexOf(valorABorrar);
+
+        if (indice !== -1) {
+            claves.splice(indice, 1);
+        }
+
+        while (listaClaves.firstChild) {
+            listaClaves.removeChild(listaClaves.firstChild);
+        }
+
+        crearListaClaves();
+
+    }
+    
+    function guardarClaves() {
+        
+        let rutaNombre = '{{ruta.nombre}}'
+        claveString = ''
+        
+        for (let i = 0; i < claves.length; i++) {
+
+            claveString += claves[i] + ',:';
+ 
+        }    
+        
+        let url = '{% url "guardar-claves" %}'
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': '{{ csrf_token }}' // Asegúrate de incluir el token CSRF si es necesario
+            },
+            body: `clave_string=${claveString}&ruta=${rutaNombre}`
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(data => {
+
+            let res = JSON.parse(data)
+            mensajeClaves.classList.remove('no-mostrar')
+
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
+        
+    }
+
+    function convertirFecha(fechaOriginal) {
+        // Objeto de nombres de meses en español
+        const meses = {
+            'enero': '01', 'febrero': '02', 'marzo': '03', 'abril': '04',
+            'mayo': '05', 'junio': '06', 'julio': '07', 'agosto': '08',
+            'septiembre': '09', 'octubre': '10', 'noviembre': '11', 'diciembre': '12'
+        };
+    
+        // Separar la fecha en partes
+        const partes = fechaOriginal.split(' ');
+    
+        // Obtener el día, mes y año
+        const dia = partes[0];
+        const mes = meses[partes[2].toLowerCase()];
+        const anio = partes[4];
+    
+        // Formatear la nueva fecha
+        const fechaFormateada = `${dia}-${mes}-${anio}`;
+    
+        return fechaFormateada;
+    }
+    
+    function solicitudAemet(url) {
+
+        fetch(url)
+        .then(response => response.json())
+        .then(data => {
+
+            //console.log(data)
+            semana = data[0].prediccion.dia
+
+            setTimeout(function() {
+                
+                for (i = 0; i < semana.length; i++) {
+                    encabezadosTabla.push(saberDiaSemana(semana[i].fecha))
+                }
+
+                //crear los encabezados de la tabla
+                var encabezado = document.querySelector('thead tr'); // Obtener la fila del encabezado
+                for (var i = 0; i < encabezadosTabla.length; i++) {
+                    var th = document.createElement('th'); // Crear una nueva etiqueta <th>
+                    th.textContent = encabezadosTabla[i]; // Asignar el texto del array al contenido de <th>
+                    encabezado.appendChild(th); // Agregar <th> a la fila del encabezado
+                }
+
+                //Crear filas
+                var tablebody = document.querySelector('tbody'); // Obtener la fila del encabezado
+
+                for (var i = 0; i < 4; i++) {
+                    var elementTr = document.createElement('tr');
+                    elementTr.id = 'tr-'+ i;
+                    tablebody.appendChild(elementTr);
+                    var tr = document.getElementById(elementTr.id)
+
+                    
+                    for (var x = 0; x < encabezadosTabla.length; x++) {
+                        var td = document.createElement('td');
+                        td.classList.add('no-padding');
+
+                        //asignar data correspondiente
+
+                        if ( i === 0) { //iteracion para cielos
+                            td.id = 'td1-'+ x;
+                            for (y = 0; y < data[0].prediccion.dia.length; y++) {
+                                
+                                if (data[0].prediccion.dia[x].estadoCielo[y].descripcion != '') {
+
+                                    cielos = data[0].prediccion.dia[x].estadoCielo[y].descripcion;
+                                    //td.innerHTML = data[0].prediccion.dia[x].estadoCielo[y].descripcion;
+                                    var iconoCielo = document.createElement('img');
+                                    iconoCielo.classList.add('icono-cielo')
+                                    iconoCielo.src = ''
+                                    switch (cielos) {
+                                        case 'Despejado':
+                                            iconoCielo.src = "{% static 'iconos/despejado.png' %}";
+                                        break;
+                                        case 'Nuboso':
+                                            iconoCielo.src = "{% static 'iconos/nuboso.png' %}";
+                                        break;
+                                        case 'Nuboso con lluvia':
+                                            iconoCielo.src = "{% static 'iconos/poca-lluvia.png' %}";
+                                        break;
+                                        case 'Nuboso con lluvia escasa':
+                                            iconoCielo.src = "{% static 'iconos/poca-lluvia.png' %}";
+                                        break;
+                                        case 'Intervalos nubosos':
+                                            iconoCielo.src = "{% static 'iconos/poco-nuboso.png' %}";
+                                        break;
+                                        case 'Intervalos nubosos con lluvia':
+                                            iconoCielo.src = "{% static 'iconos/poca-lluvia.png' %}";
+                                        break;
+                                        case 'Poco nuboso':
+                                            iconoCielo.src = "{% static 'iconos/poco-nuboso.png' %}";
+                                        break;
+                                        case 'Muy nuboso':
+                                            iconoCielo.src = "{% static 'iconos/nuboso.png' %}";
+                                        break;
+                                        case 'Muy nuboso con lluvia':
+                                            iconoCielo.src = "{% static 'iconos/lluvioso.png' %}";
+                                        break;
+                                        case 'Muy nuboso con tormenta':
+                                            iconoCielo.src = "{% static 'iconos/tormenta.png' %}";
+                                        break;
+                                        case 'Intervalos nubosos con lluvia escasa':
+                                            iconoCielo.src = "{% static 'iconos/poca-lluvia.png' %}";
+                                        break;
+                                        case 'Cubierto con lluvia': 
+                                            iconoCielo.src = "{% static 'iconos/lluvioso.png' %}";
+                                        break;
+                                        case 'Cubierto con lluvia escasa': 
+                                            iconoCielo.src = "{% static 'iconos/poca-lluvia.png' %}";
+                                        break;
+                                        case 'Muy nuboso con lluvia escasa':
+                                            iconoCielo.src = "{% static 'iconos/poca-lluvia.png' %}";
+                                        break;
+                                        case 'Cubierto':
+                                            iconoCielo.src = "{% static 'iconos/nuboso.png' %}";
+                                        break;
+                                        case 'Nubes altas':
+                                            iconoCielo.src = "{% static 'iconos/nubes-altas.png' %}";
+                                        break;
+                                        case 'Nubes medias':
+                                            iconoCielo.src = "{% static 'iconos/nubes-altas.png' %}";
+                                        break;
+                                        case 'Nubes bajas':
+                                            iconoCielo.src = "{% static 'iconos/nubes-altas.png' %}";
+                                        break;
+                                        case 'Niebla':
+                                            iconoCielo.src = "{% static 'iconos/niebla.png' %}";
+                                        break;
+                                        case 'Tormenta':
+                                            iconoCielo.src = "{% static 'iconos/tormenta.png' %}";
+                                        break;
+                                        case 'Cubierto con tormenta':
+                                            iconoCielo.src = "{% static 'iconos/tormenta.png' %}";
+                                        break;
+                                        case 'Nieve':
+                                            iconoCielo.src = "{% static 'iconos/nevado.png' %}";
+                                        break;
+                                        case 'Calima':
+                                            iconoCielo.src = "{% static 'iconos/calima.png' %}";
+                                        break;
+                                        case 'Bruma':
+                                            iconoCielo.src = "{% static 'iconos/niebla.png' %}";
+                                        break;
+                                        
+                                        
+                                    }
+
+                                    iconoCielo.alt = cielos
+                                    iconoCielo.title = cielos
+
+                                    td.appendChild(iconoCielo)
+
+                                    break;
+                                }
+                            }
+                            tr.appendChild(td)
+                        }
+
+                        
+                        if (i === 1) { //iteracion para temp max
+                            td.id = 'td2-'+ x;
+                            var tempMax = document.createElement('p');
+                            tempMax.classList.add('temp-max');
+                            tempMax.innerHTML = data[0].prediccion.dia[x].temperatura.maxima + 'º'
+                            td.appendChild(tempMax)
+                            tr.appendChild(td)
+                        }
+
+                        if (i === 2) { //iteracion para temp min
+                            td.id = 'td3-'+ x;
+                            var tempMin = document.createElement('p');
+                            tempMin.classList.add('temp-min');
+                            tempMin.innerHTML = data[0].prediccion.dia[x].temperatura.minima + 'º'
+                            td.appendChild(tempMin)
+                            tr.appendChild(td)
+                        }
+            
+                    }
+
+                }
+                
+                loaderTiempo.classList.remove('mostrar');
+
+            }, 50);
+
+        })
+        .catch(error => console.error('Error:', error));
+
+    
+
+        
+    }
+
+    function saberDiaSemana(fecha) {
+        const date = new Date(fecha);
+        const diasSemana = ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'];
+        return diasSemana[date.getUTCDay()] + ' ' + date.getDate();
+    }
+      
+    function eliminar() {
+        Modal.classList.add('mostrar')
+    }
+
+    function cancelarBorrado() {
+        Modal.classList.remove('mostrar')
+    }
+
+    function aceptarBorrado(id) {
+
+        var url = `/eliminar-ruta/${id}`
+        window.location.href = url;
+
+    }
+
+    function inicializarMapasTracks() {
+
+
+        var mapas = document.getElementsByClassName('mapas-tracks');
+    
+        for (i=0; i< mapas.length; i++) {
+    
+            coordenadasBrutas = mapas[i].getAttribute('data-ruta-info')
+    
+            // Eliminamos los caracteres no deseados y dividimos el string en coordenadas individuales
+            var arrayCoordenadas = coordenadasBrutas.replace(/[\[\]]/g, "").split(", ")
+            
+            const coordenadas = [];
+    
+            for (let i = 0; i < arrayCoordenadas.length; i += 2) {
+                const lat = parseFloat(arrayCoordenadas[i].replace('(', ''));
+                const lng = parseFloat(arrayCoordenadas[i + 1].replace(')', ''));
+                coordenadas.push({ lat, lng });
+            }
+    
+            // Calcular las coordenadas promedio
+            var sumLat = 0;
+            var sumLng = 0;
+            for (let i = 0; i < coordenadas.length; i++) {
+                sumLat += coordenadas[i].lat;
+                sumLng += coordenadas[i].lng;
+            }
+            const avgLat = sumLat / coordenadas.length;
+            const avgLng = sumLng / coordenadas.length;
+            
+    
+            var mapa = new google.maps.Map(document.getElementById(mapas[i].id), {
+                center: { lat: avgLat, lng: avgLng }, // Utiliza la media de las coordenadas para centrar el mapa
+                zoom: 12,
+                mapTypeId: 'hybrid',
+                disableDefaultUI: true,
+                draggable: false,
+                scrollwheel: false,
+            });
+    
+            var bounds = new google.maps.LatLngBounds();
+            //console.log(bounds)
+    
+            // Agrega las coordenadas al objeto 'bounds'
+            for (var j = 0; j < coordenadas.length; j++) {
+                bounds.extend(coordenadas[j]);
+            }
+    
+    
+            var trackPath = new google.maps.Polyline({
+                path: coordenadas,
+                geodesic: true,
+                strokeColor: '#FFFF00',
+                strokeOpacity: 1.0,
+                strokeWeight: 3
+            });
+    
+    
+            // Crear marcador verde en la primera coordenada
+            var primerMarcador = new google.maps.Marker({
+                position: coordenadas[0],
+                map: mapa,
+                icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png', // Icono verde
+            });
+    
+            // Crear marcador rojo en la última coordenada
+            var ultimoMarcador = new google.maps.Marker({
+                position: coordenadas[coordenadas.length - 1],
+                map: mapa,
+                icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png', // Icono rojo
+            });
+    
+    
+            trackPath.setMap(mapa);
+            mapa.fitBounds(bounds);
+    
+        }
+    
+    }
+
+    function renombrarTitulo() {
+        var rutaTitle = document.getElementsByClassName('ruta-title');
+        var rutaDatos = document.getElementsByClassName('ruta-datos');
+    
+        for (i = 0; i < rutaTitle.length; i++) {
+            rutaTitle[i].innerHTML = rutaTitle[i].innerHTML.replace(/-/g, ' ');
+            rutaTitle[i].style.fontSize = '1.4rem';
+        }
+
+        for (i = 0; i < rutaDatos.length; i++) {
+            rutaDatos[i].style.fontSize = '1.2rem';
+        }
+
+    }
+
+    function navegarA(id) {
+        
+        loaderGeneralLogado.classList.remove('no-mostrar')
+        var url = `/ruta/${id}`
+        window.location.href = url;
+    }
+    
+    function carruselRutas(i) {
+
+        if (i == 1) {
+
+            for(let x = 0; x < 1402; x++) {
+                setTimeout(function() {
+                    contenedorScroll.scrollLeft = contenedorScroll.scrollLeft + 1;
+                }, 200);
+            }
+
+
+        } else {
+            
+            for(let x = 0; x < 701; x++) {
+                setTimeout(function() {
+                    contenedorScroll.scrollLeft = contenedorScroll.scrollLeft - 1;
+                }, 200);
+            }
+        }
+
+        
+
+    }
+    
+    configuracionInicial();
+    renombrarTitulo();
+    inicializarMapasTracks();
+
+
+</script>
+
+
+{% endblock %}

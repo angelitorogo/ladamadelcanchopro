@@ -1,0 +1,845 @@
+{% extends 'core/base-logado.html' %}
+{% load static %}
+{% block title %}{{title}}{% endblock %}
+{% block content %}
+
+    <div class="contenedor-general-mapa">
+
+        <div class="info-ruta-applet" id="info-ruta-applet" onclick="irARutaDetalle()">
+            <h4 class="info-ruta-title" id="info-ruta-title"></h4>
+            <div class="info-ruta-detalles">
+                <p class="info-detalle">Longitud: <span class="span-detalle" id="detalle-lon"></span></p>
+                <p class="info-detalle">Desnivel: <span class="span-detalle" id="detalle-des"></span></p>
+            </div>
+        </div>
+
+        <div id="modal" class="modal">
+            <div id="loaderMap" class="loaderMap"></div>
+        </div>
+        <div class="contenedor-mapa-y-lista">
+            <div id="mapa"></div>
+            <div class="contenedor-lista-rutas" id="contenedor-lista-rutas">
+                <div class="lista-tracks" id="lista-tracks">
+                    <h2 class="lista-tracks-titulo">Rutas {% if num_rutas != 0 %} ({{num_rutas}}) {% endif %}</h2>
+                    {% if num_rutas == 0 %}
+                        <div class="mensajeRutas">
+                            <h4 class="mensaje">No hay rutas</h4>
+                        </div>
+                    {% endif %}
+                    <ul class="lista-listarutas">
+                        {% for ruta in rutas %}
+                        <li class="item-listarutas" onclick="visualizarRuta('{{ forloop.counter }}')">
+                            <a class="item-listarutas-link">{{ruta.ruta}}</a>
+                            <div class="items-listarutas-opciones">
+                                <img class="item-ojo" src="{% static 'iconos/ojo-gris.png '%}" alt="ojo-negro">
+                                <img class="item-detalle" src="{% static 'iconos/detalles.png '%}" alt="detalle" onclick="detallesTrack('{{ruta.id}}')">
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="contenedor-lista" id="contenedor-lista">
+                <ul class="lista-opciones">
+                    <li class="item-opciones">
+                        <span class="item-span">Mostrar todas las rutas </span>
+                        <input  id="rutas-checkbox" type="checkbox" name="rutas-todas">
+                    </li>
+                    <li class="item-opciones">
+                        <span class="item-span">Lista</span>
+                        <input class="rutas-check" id="lista-checkbox" type="checkbox" name="rutas-lista">
+                    </li>
+                    <li class="item-opciones">
+                        <span class="item-span" onclick="navegarUrl('/mapa')">Eliminar búsqueda</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaXXI2nDL86yCEfI_lXvZ2VekLk1-jBqs"></script>
+
+    <script>
+
+        var mapGoogle = document.getElementById('mapa');
+        var mapa = new google.maps.Map(mapGoogle, {mapTypeId: 'hybrid'});
+        var coordenadas = [];
+        var contenedorLogado = document.getElementById('contenedor-logado');
+        const mediaQueryMapa = window.matchMedia('(min-width: 768px)');
+        var lista = document.getElementById('lista-checkbox');
+        var rutas = document.getElementById('rutas-checkbox');
+        var mostrarLista = '{{busqueda|yesno:"true,false"}}';    
+        var contenedorListaRutas = document.getElementById('contenedor-lista-rutas');
+        var num_rutas = '{{num_rutas}}';
+        var itemListarutas = document.getElementsByClassName('item-listarutas');
+        var itemListarutasLink = document.getElementsByClassName('item-listarutas-link');
+        var listaListaRutas = document.getElementsByClassName('lista-listarutas');
+        var rutas_markers = [];
+        var rutas_actual = [];
+        var bounds1 = new google.maps.LatLngBounds();
+        var bounds2 = new google.maps.LatLngBounds();
+        var localizacion;
+        var contadorMarcadores = 0;
+        var rutasVista = '{{rutas_json|escapejs}}';
+        var todasRutasMarcadas = false;
+        var ubicacion
+        var centro;
+        var rutas_tracks = [];
+        var busqueda = '{{busqueda}}'
+        var rutaClick = [];
+        var itemOjo = document.getElementsByClassName('item-ojo');
+        var marcadorAzul = "{% static 'iconos/marcador-azul.png' %}";
+
+        var infoRutaApplet = document.getElementById('info-ruta-applet');
+        var infoRutaTitle = document.getElementById('info-ruta-title');
+        var detalleLon = document.getElementById('detalle-lon');
+        var detalleDes = document.getElementById('detalle-des');
+        var rutaDetalle = undefined;
+
+        
+        
+        // Parseamos la cadena como JSON
+        rutasVista = JSON.parse(rutasVista);
+       
+        
+        function navegarUrl(url) {
+            window.location.href = url;
+        }
+
+        function cambiosIniciales() {
+
+            for(let i = 0; i < rutasVista.length; i++) {
+
+                rutaClick[i] = false;
+
+                // Removemos los paréntesis y dividimos la cadena en latitud y longitud
+                var coordenadasArray = rutasVista[i].inicio.slice(1, -1).split(', ');
+    
+                // Convertimos las cadenas a números
+                var latitud = parseFloat(coordenadasArray[0]);
+                var longitud = parseFloat(coordenadasArray[1]);
+    
+                // Creamos el objeto de coordenadas
+                rutasVista[i].inicio = {lat: latitud, lng: longitud};
+
+                itemListarutasLink[i].innerHTML = `${itemListarutasLink[i].innerHTML} - <span class="negrita">${rutasVista[i].distancia}km</span> - <span class="negrita">${rutasVista[i].desnivel}m</span>`
+                itemListarutasLink[i].innerHTML = itemListarutasLink[i].innerHTML.replace(/-/g, ' ');
+                
+                rutasVista[i].ruta = rutasVista[i].ruta.replace(/\-/g, ' ');
+                
+                rutasVista[i].puntos = rutasVista[i].puntos
+                    .replace('[', '')
+                    .replace(']', '')
+                    .replace(/\(/g, '')
+                    .replace(/\)/g, '');
+
+                var coordenadasArray = rutasVista[i].puntos.split(',');
+
+                // Inicializa un nuevo array para las coordenadas
+                nuevasCoordenadas = [];
+
+                var lat;
+                var lng
+                
+                for (let i = 0; i < coordenadasArray.length; i += 2) {
+
+                    lat = parseFloat(coordenadasArray[i]);
+                    lng = parseFloat(coordenadasArray[i+1]);
+
+                    nuevasCoordenadas.push({lat: lat, lng: lng});
+
+                }
+
+                rutasVista[i].puntos = nuevasCoordenadas
+                
+            }
+            
+
+            if (screen.width > 768) {
+                // Escritorio
+                contenedorLogado.style.height = '89%';
+                contenedorLogado.style.margin = "3rem auto 0";
+                contenedorLogado.style.width = "98%";
+    
+            } else {
+                // Movil
+                contenedorLogado.style.height = '81%';
+                contenedorLogado.style.margin = "3rem auto 1rem";
+            }
+
+
+            if (mostrarLista == 'true'){
+                mostrarLista = true
+                lista.checked = true
+            } else {
+                mostrarLista = false
+                lista.checked = false
+            }
+
+
+            handleScreenSizeChangeMapa(mediaQueryMapa);
+
+        }
+
+        function handleScreenSizeChangeMapa(mQuery) {
+
+            if (mQuery.matches) {
+                // Escritorio
+                contenedorLogado.style.height = '89%';
+                contenedorLogado.style.margin = "3rem auto 0";
+                contenedorLogado.style.width = "98%";
+                mapGoogle.style.height = '100%';
+
+                if (mostrarLista) {
+                    contenedorLogado.style.height = '89%';
+                    contenedorListaRutas.style.display = 'block';
+                } else {
+                    contenedorLogado.style.height = '89%';
+                    contenedorListaRutas.style.display = 'none';
+                }
+                
+            } else {
+                // Movil
+                contenedorLogado.style.height = '59%';
+                contenedorLogado.style.margin = "3rem auto 1rem";
+                contenedorLogado.style.width = "95%";
+                
+
+                if (mostrarLista) {
+                    contenedorListaRutas.style.display = 'block';
+                    mapGoogle.style.height = '73%';
+
+                } else {
+                    contenedorListaRutas.style.display = 'none';
+                    contenedorLogado.style.height = '81%';
+                    contenedorLogado.style.margin = "3rem auto 1rem";
+                    mapGoogle.style.height = '';
+                }
+
+            }
+        }
+
+        mediaQueryMapa.addListener(handleScreenSizeChangeMapa);
+
+        function localizacion(ip) {
+            //console.log('localizando ip')
+        
+            fetch(`http://ip-api.com/json/${ip}`)
+            .then(response => response.json())
+            .then(data => {
+        
+        
+                var ubicacion = {
+                    lat: data.lat,
+                    lng: data.lon,
+                };
+
+                localizacion = ubicacion;
+
+                bounds1.extend(ubicacion);
+        
+                inicializarMapa(ubicacion);
+                
+        
+            })
+            .catch(error => {
+                console.error(error);
+          });
+        }
+        
+        function geolocalizar() {
+        
+            if ("geolocation" in navigator) {
+                // El navegador soporta geolocalización
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var latitud = position.coords.latitude;
+                    var longitud = position.coords.longitude;
+            
+                    var ubicacion = { 
+                        lat: latitud,
+                        lng: longitud
+                    };
+
+                    localizacion = ubicacion;
+
+                    bounds1.extend(ubicacion);
+            
+                    inicializarMapa(ubicacion);
+            
+                }, function(error) {
+                    //console.log("Error al obtener la ubicación: " + error.message);
+                    ipPublica();
+                });
+            
+            } else {
+            
+                ipPublica();
+            
+            }
+        
+        }
+   
+        function ipPublica() {        
+            // Realiza una solicitud HTTP a un servicio externo para obtener la IP pública
+            fetch('https://api.ipify.org/?format=json')
+            .then(response => response.json())
+            .then(data => {
+            const ipAddress = data.ip;
+        
+            localizacion(ipAddress);
+             
+            })
+            .catch(error => {
+            console.error(error);
+            });
+        }
+
+        function inicializarMapa(coordenadas) {
+
+            centro = coordenadas
+
+            ubicacion = new google.maps.Marker({
+                    position: coordenadas,
+                    map: mapa,
+                    icon: 'http://maps.google.com/mapfiles/ms/icons/orange-dot.png'
+                    
+            });
+
+            mapa.setCenter(coordenadas);
+            mapa.setZoom(6);
+
+            
+        }
+
+        cambiosIniciales();
+        geolocalizar();
+        sobreRuta();
+
+        lista.addEventListener("change", function() {
+            
+
+            if (!mostrarLista) {
+
+                //console.log('mostrar')
+                mostrarLista = true;
+
+                //mapa.fitBounds(bounds);
+                
+
+            } else {
+
+                //console.log('ocultar')
+                mostrarLista = false;
+                
+              
+                //mapa.fitBounds(bounds);
+                
+            }
+
+            handleScreenSizeChangeMapa(mediaQueryMapa); //poner lista 
+
+        });
+
+        rutas.addEventListener("change", function() {
+
+            if (num_rutas != 0) {
+
+                if (rutas.checked) {
+
+                    document.getElementById('modal').style.display = 'block';
+    
+                    contadorMarcadores = 0;
+    
+                    for(let i=0;i<num_rutas;i++) {
+    
+                        itemOjo[i].style.display = 'block';
+    
+                        // Encuentra la posición del primer '<'
+                        var posicionPrimeraMenorQue = itemListarutasLink[i].innerHTML.indexOf('<');
+    
+                        // Si encontramos '<', obtenemos el substring desde el inicio hasta esa posición
+                        if ( rutas_markers[i] == undefined) {
+    
+                            bounds1.extend(rutasVista[i].inicio);
+                            
+                            rutas_markers[i] = new google.maps.Marker({
+                                position: rutasVista[i].inicio,
+                                map: mapa,
+                                icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+                                //icon: marcadorAzul
+                            });
+    
+                            rutas_tracks[i] = new google.maps.Polyline({
+                                path: rutasVista[i].puntos,
+                                map: mapa,
+                                geodesic: true,
+                                strokeColor: '#FFFF00',
+                                strokeOpacity: 1.0,
+                                strokeWeight: 3
+                            });
+    
+                            rutas_markers[i].addListener('click', function() {
+
+                                if (rutaClick[i] == false) {
+
+                                    rutaClick[i] = true
+    
+                                    rutas_tracks[i].setOptions({ strokeColor: "#ff6600" });
+                                    rutas_tracks[i].setOptions({ zIndex: 9999 });
+                                    rutas_tracks[i].setOptions({ strokeWeight: 4 });
+
+                                    itemOjo[i].src = "{% static 'iconos/ojo-naranja.png '%}" 
+
+
+                                    //Enviar el scroll de la lista a la mitad, para que el elemento este a la vista
+                                    listaListaRutas[0].scrollTop = 30 * (i - 8);      
+                                    itemListarutas[i].classList.add('selec-scroll');
+
+                                    let coordenadasCentro = coordenadasPromedio(rutasVista[i].puntos)
+
+                                    mapa.setCenter(coordenadasCentro);
+                                    mapa.setZoom(13);
+
+                                    if (!lista.checked) {
+                                        infoRutaApplet.classList.add('mostrar');
+                                        rellenarInfo(rutasVista[i])
+                                        rutaDetalle = rutasVista[i].id;
+                                    }
+                                    
+                                
+
+
+                                    
+
+                                    
+                                } else {
+
+                                    rutaClick[i] = false
+
+                                    rutas_tracks[i].setOptions({ strokeColor: "#FFFF00" });
+                                    rutas_tracks[i].setOptions({ zIndex: 0 });
+                                    rutas_tracks[i].setOptions({ strokeWeight: 3 });
+
+                                    itemOjo[i].src = "{% static 'iconos/ojo-gris.png '%}"
+
+                                    itemListarutas[i].classList.remove('selec-scroll')
+
+                                    //mapa.fitBounds(bounds1)
+
+   
+                                    infoRutaApplet.classList.remove('mostrar'); 
+                                    rutaDetalle = undefined
+                            
+
+                                }
+
+                                
+
+
+                            });                  
+    
+                        
+                            itemListarutas[i].classList.add('seleccionado')
+                            
+    
+                            contadorMarcadores++
+    
+                            if (contadorMarcadores == num_rutas ) {
+                                document.getElementById('modal').style.display = 'none';
+                            }
+            
+    
+                            setTimeout(function() {
+                                mapa.fitBounds(bounds1);
+                            }, 500);
+    
+    
+                        } else if(rutas_markers[i].mapa == null) {
+    
+    
+                            bounds1.extend(rutasVista[i].inicio);    
+    
+                            rutas_markers[i].setMap(mapa)
+                            rutas_tracks[i].setMap(mapa)
+    
+                            itemListarutas[i].classList.add('seleccionado')
+                            contadorMarcadores++
+    
+                            if (contadorMarcadores == num_rutas ) {
+                                document.getElementById('modal').style.display = 'none';
+                            }
+            
+    
+                            setTimeout(function() {
+                                mapa.fitBounds(bounds1);
+                            }, 500);
+            
+    
+                        }
+    
+                        
+    
+                    }
+    
+                    todasRutasMarcadas = true;
+           
+                } else {
+    
+                    for(let i=0;i<num_rutas;i++) {
+
+                        itemOjo[i].style.display = 'none';
+    
+                        rutas_markers[i].setMap(null);
+                        rutas_tracks[i].setMap(null);
+    
+                        bounds1 = new google.maps.LatLngBounds();
+                        bounds1.extend(localizacion);
+                        mapa.setCenter(localizacion);
+                        mapa.setZoom(6);
+                        contadorMarcadores = 0
+                        itemListarutas[i].classList.remove('seleccionado')
+    
+                        todasRutasMarcadas = false;
+
+                        rutaClick[i] = false
+
+                        rutas_tracks[i].setOptions({ strokeColor: "#FFFF00" });
+                        rutas_tracks[i].setOptions({ zIndex: 0 });
+                        rutas_tracks[i].setOptions({ strokeWeight: 3 });
+
+                        itemOjo[i].src = "{% static 'iconos/ojo-gris.png '%}"
+
+                        itemListarutas[i].classList.remove('selec-scroll')
+                        
+                    }
+
+                    infoRutaApplet.classList.remove('mostrar');
+                    
+                }
+
+            }
+
+            
+  
+        });
+
+        function visualizarRuta(num) {
+            //console.log(itemListarutas[num-1])
+
+            if (itemListarutas[num-1].classList.contains('seleccionado')){
+
+                //mapa.setCenter(localizacion);
+                //mapa.setZoom(12);
+
+                rutas_tracks[num-1].setOptions({ strokeColor: "#FFFF00" });
+                rutas_tracks[num-1].setOptions({ zIndex: 0 });
+                rutas_tracks[num-1].setOptions({ strokeWeight: 3 });
+
+                itemOjo[num-1].src = "{% static 'iconos/ojo-gris.png '%}"
+
+                //console.log('desmarcar ', rutasVista[num-1])
+                contadorMarcadores--
+                itemListarutas[num-1].classList.remove('seleccionado');
+                itemOjo[num-1].style.display = 'none';
+                rutas_markers[num-1].setMap(null)
+                rutas_tracks[num-1].setMap(null)
+
+                itemListarutas[num-1].classList.remove('selec-scroll')
+
+                bounds1 = new google.maps.LatLngBounds();
+                bounds1.extend(localizacion)
+
+                var entroMarkers = false;
+
+                for (let i = 0; i < num_rutas; i++) {
+                    if (rutas_markers[i] != undefined) {
+                        if (rutas_markers[i].map != null) {
+                            entroMarkers = true;
+                            bounds1.extend(rutasVista[i].inicio); 
+                        }
+                    }
+                }
+
+
+                if (entroMarkers) {
+                    mapa.fitBounds(bounds1);
+                } else {
+                    mapa.setZoom(6)
+                }
+
+                todasRutasMarcadas = false;
+                rutas.checked =false;
+               
+
+            } else {
+
+                contadorMarcadores++;
+                itemListarutas[num-1].classList.add('seleccionado');
+                itemOjo[num-1].style.display = 'block';
+
+                if (rutas_markers[num-1] == undefined) {
+
+                    bounds1.extend(rutasVista[num-1].inicio);
+
+                    rutas_markers[num-1] = new google.maps.Marker({
+                        position: rutasVista[num-1].inicio, //necesario lat y lng
+                        map: mapa,
+                        icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+                    });
+
+                    rutas_tracks[num-1] = new google.maps.Polyline({
+                        path: rutasVista[num-1].puntos,
+                        map: mapa,
+                        geodesic: true,
+                        strokeColor: '#FFFF00',
+                        strokeOpacity: 1.0,
+                        strokeWeight: 3
+                    });
+
+                    rutas_markers[num-1].addListener('click', function() {
+
+                        if (rutaClick[num-1] == false) {
+
+                            rutaClick[num-1] = true
+
+                            rutas_tracks[num-1].setOptions({ strokeColor: "#ff6600" });
+                            rutas_tracks[num-1].setOptions({ zIndex: 9999 });
+                            rutas_tracks[num-1].setOptions({ strokeWeight: 4 });
+
+                            itemOjo[num-1].src = "{% static 'iconos/ojo-naranja.png '%}" 
+
+                            //Enviar el scroll de la lista a la mitad, para que el elemento este a la vista
+                            listaListaRutas[0].scrollTop = 30 * (num - 9);      
+                            itemListarutas[num-1].classList.add('selec-scroll')
+
+                            let coordenadasCentro = coordenadasPromedio(rutasVista[num-1].puntos)
+
+                            mapa.setCenter(coordenadasCentro);
+                            mapa.setZoom(13);
+
+                            if (!lista.checked) {
+                                infoRutaApplet.classList.add('mostrar');
+                                rellenarInfo(rutasVista[num-1]);
+                                rutaDetalle = rutasVista[num-1].id;
+                            }
+                        
+                            
+
+                            
+                        } else {
+
+                            rutaClick[num-1] = false
+
+                            rutas_tracks[num-1].setOptions({ strokeColor: "#FFFF00" });
+                            rutas_tracks[num-1].setOptions({ zIndex: 0 });
+                            rutas_tracks[num-1].setOptions({ strokeWeight: 3 });
+
+                            itemOjo[num-1].src = "{% static 'iconos/ojo-gris.png '%}" 
+
+                            itemListarutas[num-1].classList.remove('selec-scroll')
+
+                            //mapa.fitBounds(bounds1)
+
+                            infoRutaApplet.classList.remove('mostrar');
+                            
+
+                        }
+
+
+                    });
+
+                   
+
+                    mapa.fitBounds(bounds1);
+
+
+                } else {
+                    bounds1.extend(rutasVista[num-1].inicio);
+                    rutas_markers[num-1].setMap(mapa)
+                    rutas_tracks[num-1].setMap(mapa)
+                    mapa.fitBounds(bounds1);
+                }
+
+                
+
+            }
+
+            if (contadorMarcadores == itemListarutas.length) {
+                todasRutasMarcadas = true;
+                rutas.checked = true
+            } else {
+                todasRutasMarcadas = false;
+                rutas.checked = false;
+            }
+
+
+        }
+
+        function sobreRuta() {
+
+            for(let i = 0; i < itemListarutas.length; i++) {
+
+                itemListarutas[i].addEventListener("mouseover", function(event) {
+
+                    event.stopPropagation();
+
+                    if (rutas_actual[i] != undefined) {
+                        rutas_actual[i].setMap(mapa)
+                        rutas_actual[i].setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
+                        rutas_actual[i].setZIndex(999999);
+
+
+                    } else {
+                        rutas_actual[i] = new google.maps.Marker({
+                            position: rutasVista[i].inicio, //necesario lat y lng
+                            map: mapa,
+                            icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+                        });
+
+                    }
+
+                    /*
+                    if (rutas.checked) {
+                        mapa.fitBounds(bounds1);
+
+                    } else {
+                        mapa.setCenter(rutasVista[i].inicio)
+                        mapa.setZoom(9)
+                    }
+                    */
+
+    
+                });
+                
+                itemListarutas[i].addEventListener("mouseout", function(event) {
+                    
+                    if (event.relatedTarget !== this && !this.contains(event.relatedTarget)) { //comprueba si salio ralmente de li, o es que esta por encima de a
+                        event.stopPropagation();
+            
+                        rutas_actual[i].setMap(null); // se supone que es para evitar que se dispare el evento al hacer mouseout sobre elementos hijos
+                        
+                        
+                        /*
+                        if (contadorMarcadores == 0) {
+                            mapa.setCenter(localizacion)
+                            mapa.setZoom(12)
+                           
+                        } else {
+                            mapa.fitBounds(bounds1);
+                        }
+                        */
+                        
+
+                    }
+    
+                });
+            }
+
+        }
+
+        for(let i=0; i< itemOjo.length; i++) {
+
+
+            itemOjo[i].addEventListener("click", function(event) {
+
+
+                if (itemListarutas[i].classList.contains('seleccionado')) {
+                    event.stopPropagation();
+
+                    if (itemListarutas[i].classList.contains('selec-scroll')) {
+
+                        itemListarutas[i].classList.remove('selec-scroll');
+                        itemOjo[i].src = "{% static 'iconos/ojo-gris.png '%}" 
+    
+                        rutas_tracks[i].setOptions({ strokeColor: "#FFFF00" });
+                        rutas_tracks[i].setOptions({ zIndex: 0 });
+                        rutas_tracks[i].setOptions({ strokeWeight: 3 });
+
+                        mapa.fitBounds(bounds1)
+
+                        rutaClick[i] = false
+                        
+                        infoRutaApplet.classList.remove('mostrar');
+
+
+                    } else {
+
+                        itemListarutas[i].classList.add('selec-scroll');
+                        itemOjo[i].src = "{% static 'iconos/ojo-naranja.png '%}" 
+    
+                        rutas_tracks[i].setOptions({ strokeColor: "#ff6600" });
+                        rutas_tracks[i].setOptions({ zIndex: 9999 });
+                        rutas_tracks[i].setOptions({ strokeWeight: 4 });
+
+                        let coordenadasCentro = coordenadasPromedio(rutasVista[i].puntos)
+
+                        mapa.setCenter(coordenadasCentro);
+                        mapa.setZoom(13);
+
+                        rutaClick[i] = true
+
+                        if (!lista.checked) {
+                            infoRutaApplet.classList.add('mostrar');
+                            rellenarInfo(rutasVista[i]);
+                            rutaDetalle = rutasVista[i].id;
+                        }
+
+                    }
+
+                    
+                } 
+
+                
+
+            });
+        }     
+        
+        function coordenadasPromedio(coordenadas) {
+             // Calcular las coordenadas promedio
+            var sumLat = 0;
+            var sumLng = 0;
+            for (let i = 0; i < coordenadas.length; i++) {
+                sumLat += coordenadas[i].lat;
+                sumLng += coordenadas[i].lng;
+            }
+            const avgLat = sumLat / coordenadas.length;
+            const avgLng = sumLng / coordenadas.length;
+
+            return {lat: avgLat, lng: avgLng }
+
+        }
+
+        function detallesTrack(id) {
+
+            var url = `/ruta/${id}`
+            window.location.href = url;
+
+            event.stopPropagation(); // Detiene la propagación del evento
+
+        }
+
+        function rellenarInfo(ruta) {
+
+            infoRutaTitle.innerHTML = ruta.ruta;
+            detalleLon.innerHTML = ruta.distancia + 'km';
+            detalleDes.innerHTML = ruta.desnivel + 'm';
+
+        }
+
+        function irARutaDetalle() {
+
+            var url = `/ruta/${rutaDetalle}`
+            window.location.href = url;
+
+        }
+
+
+
+    </script>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+
+{% extends 'core/base-nologado.html' %}
+{% load static %}
+{% block title %}{{title}}{% endblock %}
+{% block content %}
+
+    <div class="contenedor-leyenda">
+
+        <h1 class="title-general">La Dama del Cancho</h1>
+
+        <div class="leyenda-imagen">
+            <img class="leyenda-img" src="{% static 'img/cancho de los muertos.jpg' %}" alt="cancho de los muertos">
+        </div>
+
+        <p class="leyenda">
+            Dice la leyenda, y también la sabiduría popular, que por esta zona de La Pedriza merodeaban y se guarecían un grupo de bandoleros llamados "Los Peseteros", que en cierta ocasión tomaron en cautiverio a una hermosa dama madrileña de rico y poderoso linaje con el fin de pedir un rescate por su liberación.
+            La belleza de la dama atrajo poderosamente al jefe de la banda, que quiso hacer de ella su amante y preservarla en exclusiva para sí mismo. <br>
+            Cierto día el jefe, teniendo que abandonar el campamento para perpetrar otro golpe, delegó la custodia de la dama a dos de los bandoleros de su grupo, en los que más confiaba.
+            Ocurrió que estos dos malhechores, traicionando la confianza de su jefe, y como la ocasión hace el deseo, decidieron sortearse a la dama entre ellos, con el fin de satisfacer sus más bajos instintos mediante el abuso y la vejación de la señora. Cuando el ganador se disponía a realizar la deshonesta cobardía, el otro bandolero, conmovido por los desaforados gritos de la dama, salió en su auxilio, iniciándose así una reyerta entre ambos que acabó con la muerte de uno de ellos. <br>
+            El Jefe, al regresar, una vez enterado de lo acaecido, decidió ajusticiar a ambos bandoleros, aún estando uno ya muerto, despeñándolos por un cancho de altas paredes rocosas, como así era usanza y costumbre de administrar justicia sumarísima. Ordenó al bandolero vivo que acarreara el cadáver del compañero hasta estos riscos, y una vez despeñado, el jefe se dispuso a ejecutarle propinándole un fuerte empujón desde el borde del precipicio. Pero en el momento de caer, el ajusticiado agarró a su jefe de la pierna causando finalmente que ambos cayeran al vacío.
+            Por eso estos altos riscos se conocen desde entonces como Cancho de los Muertos. Al pie del cancho se abre un caos de grandes rocas y profundas grietas, donde se dice, por algún tiempo pudieron verse los cadáveres de los tres bandidos.
+        </p>
+
+        <div class="contenedor-fondo-ddc">
+            <img class="icono-ddc" src='{% static "iconos/LDDC-icono.png" %}' alt="">
+        </div>
+
+        <a class="btn-entrar" href="{% url 'rutas' %}" onclick="cargarLoader()">Entrar</a>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,117 @@
+{% extends 'core/base-logado.html' %}
+{% load static %}
+{% block title %}{{title}}{% endblock %}
+{% block content %}
+
+
+
+<h1 class="title-general-logado">{{title}}</h1>
+
+<div class="contenedor-nuevoTrack">
+    {% if 'ok' in request.GET %}
+        <p class="mensaje-registration mensaje-email success">Mensaje envíado</p>
+    {% endif %}
+    {% if 'ko' in request.GET %}
+        <p class="mensaje-registration mensaje-email error">Error al envíar el mensaje</p>
+    {% endif %}
+    {% if 'no-captcha' in request.GET %}
+        <p class="mensaje-registration mensaje-email error">captcha incorrecto</p>
+    {% endif %}
+
+    <div id="loader" class="loaderMensaje"></div>
+
+    <form  class="formulario formulario-login form-upload form-contact" method="POST" enctype="multipart/form-data" id="form-contact">
+        {% csrf_token %}
+
+        <div class="uploads-group">
+            <label class="label-imagen" for="nombre">Nombre</label>
+            <input type="text" name="nombre" class="formulario-input input-file" id="texto-nombre" oninput="cambiosNombre(event)">
+        </div>
+
+        <div class="uploads-group">
+            <label class="label-imagen" for="email">Email</label>
+            <input type="email" name="email" class="formulario-input input-file" id="texto-email" oninput="cambiosEmail(event)">
+        </div>
+
+        <div class="uploads-group">
+            <label class="label-imagen" for="content">Mensaje</label>
+            <textarea name="content" class="formulario-input input-textarea area-email area-comentario" rows="4" cols="150" id="texto-content" oninput="cambiosContent(event)"></textarea>
+        </div>
+
+        <div class="uploads-group group-captcha">
+            <label class="label-imagen label-captcha" for="content">Introduce los números de la imagen</label>
+            <div class="image-captcha">
+                <input class="formulario-input input-file input-captcha" type="text" name="captcha_input" id="captcha_input" oninput="cambiosCaptcha(event)">
+                <img class="img-captcha" src="{% static 'captcha/captcha_image.png' %}" alt="CAPTCHA">
+            </div>
+        </div>
+        
+        <input type="hidden" name="captcha_id" value="{{ captcha_id }}">
+
+        <input type="submit" class="btn btn-success" value="Aceptar" id="submit-button" disabled onclick="enviarMensaje()">
+
+    </form>
+
+</div>
+
+
+<script>
+
+    var loader = document.getElementById('loader');
+
+    function validarCampos() {
+
+        var submitButton = document.getElementById('submit-button');
+        var textoNombre = document.getElementById('texto-nombre');
+        var textoEmail = document.getElementById('texto-email');
+        var textoContent = document.getElementById('texto-content');
+        var captchaInput = document.getElementById('captcha_input');
+    
+        var nombre = textoNombre.value;
+        var email = textoEmail.value;
+        var content = textoContent.value;
+        var captcha = captchaInput.value;
+    
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Expresión regular para validar email
+    
+        var nombreValido = nombre.length >= 3;
+        var emailValido = emailRegex.test(email);
+        var contentValido = content.length >= 5;
+        var captchaValido = captcha.length == 5;
+    
+        if (nombreValido && emailValido && contentValido && captchaValido) {
+            submitButton.removeAttribute('disabled');
+            return true;
+        } else {
+            submitButton.setAttribute('disabled', 'true');
+            return false;
+        }
+    }
+
+    function cambiosNombre(event) {
+        validarCampos();
+    }
+
+    function cambiosEmail(event) {
+        validarCampos();
+    }
+
+    function cambiosContent(event) {
+        validarCampos();
+    }
+
+    function cambiosCaptcha(event) {
+        validarCampos();
+    }
+
+    function enviarMensaje() {
+        loader.classList.add('mostrar');
+    }
+
+
+</script>
+
+
+
+
+{% endblock %}

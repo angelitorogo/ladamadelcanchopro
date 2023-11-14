@@ -1,0 +1,435 @@
+/*Variables*/
+:root {
+    
+    /*Colores suaves*/
+    --negro: #282828;
+    --negro-true: #000000; 
+    --blanco: #e3e3e3;
+    --blanco-true: #ffffff;
+    --back-ground: #57574770;
+    --secundario: #74745c52;
+    --hover-menu: #ffffff30;
+    --hover-menu-negro: #2f2f2f;
+    --seleccionado:  #6c3f80;
+    --footer: #eeeeee;
+    --menu-lateral: #282828;
+    --menu-lateral-hover: #5f5f4e; 
+    --btn-success: #327732;
+    --btn-cancel: #810808;
+    --btn-success-hover: #0e960e;
+    --btn-cancel-hover: #ae0b0b;
+    --gris: #666666;
+    --success: #008900;
+    --error: #a70000;
+    --punteroPerfil: rgb(0, 11, 255);
+    --border-ruta: #d1d1d1;
+    --fondo: #f4f4f4;
+    --seleccionado: #6296ce;
+    --sombra : #0000006a;
+    --disabled: #97939a;
+
+}
+
+@media (max-width: 576px) {
+    /* Estilos para pantallas pequeñas */
+}
+  
+@media (min-width: 768px ) and (max-width: 992px) {
+/* Estilos para pantallas medianas */
+}
+
+@media (min-width: 992px) {
+/* Estilos para pantallas grandes */
+}
+  
+
+/*Globales*/
+* {
+    /*transition: all 0.3s;*/
+  }
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    
+}
+
+body {
+    font-size: 1.6rem;
+    font-weight: 300;
+    /*min-width: 37.6rem;*/
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-width: 37rem;
+}
+
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+ul {
+    padding:0;
+    list-style: none;
+    margin: 0;
+}
+
+@media (min-width: 890px) { 
+    ul {
+    }
+    
+}
+
+/*Tipografias*/
+h1, h2, h3 {
+    margin: 0;
+    line-height: 1.2;
+}
+
+h1, h2 {
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin-block: 3rem;
+}
+
+
+h3 {
+    font-size: 2.4rem;
+    font-weight: 300;
+}
+
+h4 {
+    font-size: 2.2rem;
+    font-weight: 500;
+}
+
+[class$="heading"] {
+    margin: 2rem 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    font-size: 1.6rem;
+    line-height: 1.8;
+}
+
+.loader {
+    border: 1rem solid #d6d6d6; /* color del loader */
+    border-top: 1rem solid var(--menu-lateral); /* color del loader activo */
+    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+    animation: spin 1s linear infinite;
+    margin: 3rem auto 3rem auto;
+    position: absolute;
+    z-index: 999999999999999;
+    top: 28%;
+    left: 39%;
+    display: none;
+}
+
+@media (min-width: 890px) {   
+    .loader {
+        top: 28%;
+        left: 39%;
+    }
+}
+
+.loaderComentarios {
+    border: 1rem solid #d6d6d6; /* color del loader */
+    border-top: 1rem solid var(--menu-lateral); /* color del loader activo */
+    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+    animation: spin 1s linear infinite;
+    margin: 3rem auto 3rem auto;
+    position: absolute;
+    z-index: 999;
+    bottom: 15%;
+    left: 38%;
+    display: none;
+}
+
+@media (min-width: 890px) {   
+    .loaderComentarios {
+        bottom: 18%;
+        left: 44%;
+    }
+}
+
+.loaderGeneral {
+    border: 1rem solid #d6d6d6; /* color del loader */
+    border-top: 1rem solid var(--menu-lateral); /* color del loader activo */
+    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+    animation: spin 1s linear infinite;
+    margin: 3rem auto 3rem auto;
+    position: absolute;
+    z-index: 999999999999999;
+    top: 26.5%;
+    left: 39%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+@media (min-width: 890px) {   
+    .loaderGeneral {
+        top: 32.2%;
+        left: 47.5%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.loaderGeneralLogado {
+    border: 1rem solid #d6d6d6; /* color del loader */
+    border-top: 1rem solid var(--menu-lateral); /* color del loader activo */
+    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+    animation: spin 1s linear infinite;
+    margin: 3rem auto 3rem auto;
+    position: absolute;
+    z-index: 999999999999999;
+    top: 26.5%;
+    left: 39%;
+    transform: translate(-50%, -50%);
+}
+
+@media (min-width: 890px) {   
+    .loaderGeneralLogado {
+        top: 170.5px;
+        left: 47%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+
+.loaderPaginador {
+    border: 1rem solid #d6d6d6; /* color del loader */
+    border-top: 1rem solid var(--menu-lateral); /* color del loader activo */
+    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+    animation: spin 1s linear infinite;
+    margin: 3rem auto 3rem auto;
+    position: absolute;
+    z-index: 999999999999999;
+    top: -1082.5%;
+    left: 39%;
+    display: none;
+}
+
+@media (min-width: 890px) {   
+    .loaderPaginador {
+        top: -824%;
+        left: 46.6%;
+    }
+}
+
+
+
+
+.loaderCarrusel {
+    border: 1rem solid #d6d6d6; /* color del loader */
+    border-top: 1rem solid #000000; /* color del loader activo */
+    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+    animation: spin 1s linear infinite;
+    margin: 3rem auto 3rem auto;
+    position: absolute;
+    z-index: 999999999999999;
+    top: 40%;
+    left: 40%;
+    display: none;
+}
+
+@media (min-width: 890px) {   
+    .loaderCarrusel {
+        top: 40%;
+        left: 47%;
+    }
+}
+
+
+.loaderMap {
+    border: 1rem solid #d6d6d6; /* color del loader */
+    border-top: 1rem solid var(--menu-lateral); /* color del loader activo */
+    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+    animation: spin 1s linear infinite;
+    margin: 3rem auto 3rem auto;
+    position: absolute;
+    z-index: 999999999999999;
+    top: 23%;
+    left: 40%;
+}
+
+@media (min-width: 890px) {   
+    .loaderMap {
+        top: 23%;
+        left: 47%;
+    }
+}
+
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loaderUpload {
+    border: 1rem solid #d6d6d6; /* color del loader */
+    border-top: 1rem solid var(--menu-lateral); /* color del loader activo */
+    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+    animation: spin 1s linear infinite;
+    margin: 3rem auto 3rem auto;
+    position: absolute;
+    z-index: 999999999999999;
+    top: 40%;
+    left: 40%;
+}
+
+@media (min-width: 890px) {   
+    .loaderUpload {
+        top: 40%;
+        left: 47%;
+    }
+}
+
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loaderMensaje {
+    border: 1rem solid #d6d6d6; /* color del loader */
+    border-top: 1rem solid var(--menu-lateral); /* color del loader activo */
+    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+    animation: spin 1s linear infinite;
+    margin: 3rem auto 3rem auto;
+    position: absolute;
+    z-index: 999999999999999;
+    top: 40%;
+    left: 40%;
+    display: none;
+}
+
+@media (min-width: 890px) {   
+    .loaderMensaje {
+        top: 40%;
+        left: 47%;
+    }
+}
+
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+.mensaje-registration{
+    background-color: white;
+    width: 98%;
+    margin: 0 auto 2rem auto;
+    font-weight: 400;
+    text-align: center;
+    border-radius: 0.5rem;
+}
+
+.success {
+    color: var(--success);
+}
+
+.error {
+    color: var(--error);
+}
+
+
+.title {
+    color: white;
+    
+}
+
+.cursor:hover {
+    cursor: pointer;
+}
+
+.mapa-google {
+    height: 600px;
+    max-width:1500px; 
+    margin: 1rem auto;
+}
+
+.center {
+    text-align: center;
+}
+
+
+.error {
+    background-color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    color: red;
+}
+
+/*Scroll bar*/
+
+::-webkit-scrollbar {
+    background-color: var(--blanco-true); /* Color del fondo */
+    height: 8px; /* Altura de la barra de desplazamiento */
+    width: 5px;
+}
+
+/* Cambiar el color de la barra de desplazamiento */
+::-webkit-scrollbar-thumb {
+    background-color: var(--menu-lateral); /* Color de la barra de desplazamiento */
+    /*border-radius: 4px;*/ /* Radio de borde para darle un aspecto más suave */
+}
+
+/* Opcional: Cambiar el color del fondo de la zona de agarre de la barra de desplazamiento */
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--menu-lateral); /* Color de la barra de desplazamiento al pasar el cursor sobre ella */
+}
+
+
+/*MODAL semitrasparente*/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.negrita {
+    font-weight: 400;
+}

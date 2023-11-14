@@ -1,0 +1,52 @@
+{% extends 'core/base-logado.html' %}
+{% load static %}
+{% block title %}{{title}}{% endblock %}
+{% block content %}
+
+    <h1 class="title-general-logado">{{title}}</h1>
+
+
+    <div class="contenedor-nuevoTrack editar-track">
+        <form  class="formulario formulario-edit " method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="formulario-group">
+                <label class="label-track" for="video">Descripción</label>
+                <textarea name="descripcion" class="formulario-input input-textarea" id="id_descripcion" rows="4" cols="150"></textarea>
+            </div>
+
+            <div class="formulario-group">
+                <div class="formulario-btn">
+                    <input type="submit" class="btn btn-success btn-desc" value="Aceptar" id="btn-submit"> <!--onclick="cargarLoader()"-->
+                    <button type="button" class="btn btn-success btn-desc color-red" onclick="navegarA('{{idRuta}}')">Volver</button>
+                </div>
+                
+            </div>
+
+    
+        </form>
+
+        
+    
+    </div>
+
+    <script>
+
+        var textArea = document.getElementById('id_descripcion');
+
+        textArea.value = '{{ruta.descripcion|linebreaksbr}}'
+
+        // Reemplazar las etiquetas <br> con saltos de línea reales
+        textArea.value = textArea.value.replace(/<br>/g, '\n');
+
+        function navegarA(id) {
+            var url = `/ruta/${id}`
+            window.location.href = url;
+        }
+
+        
+    </script>
+
+    
+{% endblock %}
+
